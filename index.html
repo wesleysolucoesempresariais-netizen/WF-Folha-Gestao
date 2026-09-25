@@ -231,9 +231,11 @@
   .hero::before{
     content:"";
     position:absolute;
-    right:-16%;
+    /* Símbolo grande atrás do texto (como no manual), alinhado à margem direita
+       do conteúdo: fica sempre inteiro, em qualquer largura de tela. */
+    right:max(24px, calc(50% - 590px));
     top:50%;
-    width:min(62vw, 760px);
+    width:min(700px, 55vw);
     aspect-ratio:1/1;
     transform:translateY(-50%);
     background:rgba(255,255,255,0.07);
@@ -241,7 +243,7 @@
             mask:var(--wm-glyph) center/contain no-repeat;
     pointer-events:none;
   }
-  @media (max-width:860px){ .hero::before{width:120vw; right:-45%; opacity:0.8;} }
+  @media (max-width:860px){ .hero::before{right:auto; left:50%; width:88vw; transform:translate(-50%,-50%); background:rgba(255,255,255,0.05);} }
   .hero-inner{
     position:relative;
     padding:76px 0 84px;
