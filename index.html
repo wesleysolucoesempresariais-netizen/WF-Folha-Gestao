@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>WF Folha &amp; Gestão</title>
-<meta name="description" content="WF Folha &amp; Gestão — terceirização de Departamento Pessoal: folha de pagamento, admissões, rescisões, férias e eSocial para empresas e escritórios contábeis em Recife, litoral sul de PE e Maragogi-AL.">
+<meta name="description" content="WF Folha &amp; Gestão — terceirização de Departamento Pessoal: folha de pagamento, admissões, rescisões, férias e eSocial para condomínios, construtoras, escritórios contábeis, clínicas, comércio, MEI e empregador doméstico em Recife, litoral sul de PE e Maragogi-AL.">
 <meta name="theme-color" content="#084D6E">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="icon-512.png">
@@ -219,7 +219,9 @@
   .nav-cta{display:none;}
   @media (min-width:860px){ .nav-cta{display:inline-flex;} }
   .nav-links-mobile-hide{display:none;}
-  @media (min-width:860px){ .nav-links-mobile-hide{display:flex;} }
+  @media (min-width:1100px){ .nav-links-mobile-hide{display:flex;} }
+  nav.links a{white-space:nowrap;}
+  @media (max-width:1240px){ nav.links{gap:22px;} }
 
   /* ====== Hero ====== */
   .hero{
@@ -333,6 +335,42 @@
     padding-top:2px;
   }
   .ledger-desc{color:var(--ink-soft); font-size:var(--fs-sm); padding-top:2px;}
+
+
+  /* ====== Para o seu negócio (segmentos) ====== */
+  .segmentos{background:var(--brand-deep); color:#F3F7F9; position:relative; overflow:hidden;}
+  .segmentos .eyebrow{color:var(--brand-gold);}
+  .segmentos .section-head h2{color:#FFFFFF;}
+  .segmentos .section-head p{color:rgba(255,255,255,0.82);}
+  .seg-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;}
+  @media (max-width:1080px){ .seg-grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:600px){ .seg-grid{grid-template-columns:1fr;} }
+  .seg-card{
+    display:flex; flex-direction:column;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:12px;
+    padding:24px 22px 22px;
+  }
+  .seg-icon{
+    width:48px; height:48px; border-radius:12px;
+    display:grid; place-items:center;
+    background:rgba(255,255,255,0.08);
+    color:var(--brand-gold);
+  }
+  .seg-icon svg{width:26px; height:26px;}
+  .seg-card h3{margin-top:16px; font-size:var(--fs-md); color:#FFFFFF; line-height:1.25;}
+  .seg-card p{margin-top:8px; font-size:var(--fs-sm); color:rgba(255,255,255,0.86); line-height:1.5;}
+  .seg-card ul{list-style:none; margin:14px 0 18px; padding:0; display:grid; gap:6px;}
+  .seg-card li{position:relative; padding-left:18px; font-size:var(--fs-xs); color:rgba(255,255,255,0.74); line-height:1.45;}
+  .seg-card li::before{content:""; position:absolute; left:2px; top:0.55em; width:6px; height:6px; border-radius:50%; background:var(--brand-gold);}
+  .seg-link{
+    margin-top:auto; align-self:flex-start;
+    font-family:var(--font-display); font-weight:700; font-size:var(--fs-sm);
+    color:#FFFFFF; text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,0.4); padding-bottom:2px;
+  }
+  .seg-link:hover{border-bottom-color:#FFFFFF;}
 
   /* ====== Comparison ====== */
   .compare{
@@ -577,7 +615,7 @@
     .mobile-cta{display:inline-flex;}
   }
 
-  @media (max-width:859px){ .nav-links-mobile-hide{display:none !important;} }
+  @media (max-width:1099px){ .nav-links-mobile-hide{display:none !important;} }
 
   /* ====== Questionário de proposta ====== */
   .quote{
@@ -618,6 +656,7 @@
     </a>
     <nav class="links nav-links-mobile-hide">
       <a href="#servicos">Serviços</a>
+      <a href="#para-quem">Para quem</a>
       <a href="#comparativo">Por que terceirizar</a>
       <a href="#processo">Como funciona</a>
       <a href="#proposta">Proposta</a>
@@ -716,6 +755,74 @@
         <div class="ledger-title">Consultoria trabalhista</div>
         <div class="ledger-desc">Orientação sobre CLT, riscos e boas práticas de gestão de pessoas, sempre que uma dúvida aparecer.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="segmentos" id="para-quem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Para o seu negócio</span>
+      <h2>Cada negócio tem uma rotina de DP diferente.</h2>
+      <p>Escalas de condomínio, equipes de obra, carteira de escritório contábil ou o primeiro funcionário do MEI — a folha é montada para a realidade do seu negócio.</p>
+    </div>
+    <div class="seg-grid">
+      <article class="seg-card">
+        <span class="seg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="10" height="18" rx="1"/><path d="M14 9h5a1 1 0 0 1 1 1v11H14"/><path d="M7 7h1.5M9.5 7H11M7 11h1.5M9.5 11H11M7 15h1.5M9.5 15H11M16.5 13h1M16.5 17h1"/><path d="M8 21v-2.5h2V21"/></svg></span>
+        <h3>Administradoras de condomínio</h3>
+        <p>A folha de todos os seus condomínios numa rotina só.</p>
+        <ul><li>Porteiros, zeladores e equipe de limpeza</li><li>Escalas 12x36 e adicional noturno</li><li>Convenção coletiva aplicada a cada reajuste</li></ul>
+        <a class="seg-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Sou%20de%20uma%20administradora%20de%20condom%C3%ADnios.%20Quero%20saber%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20do%20DP." target="_blank" rel="noopener">Falar sobre o meu caso <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="seg-card">
+        <span class="seg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17.5h18"/><path d="M5 17.5a7 7 0 0 1 14 0"/><path d="M10 10.8V7.5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3.3"/><path d="M4 20.5h16"/></svg></span>
+        <h3>Construtoras</h3>
+        <p>A equipe muda a cada obra. A folha fica sempre em dia.</p>
+        <ul><li>Admissões e desligamentos rápidos</li><li>Horas extras e controle por obra</li><li>Convenção da construção civil aplicada</li></ul>
+        <a class="seg-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20uma%20construtora.%20Quero%20saber%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20do%20DP." target="_blank" rel="noopener">Falar sobre o meu caso <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="seg-card">
+        <span class="seg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="2"/><rect x="8" y="5.5" width="8" height="3.5" rx="0.6"/><path d="M8.5 12.5h.01M12 12.5h.01M15.5 12.5h.01M8.5 15.5h.01M12 15.5h.01M15.5 15.5h.01M8.5 18.5h.01M12 18.5h.01M15.5 18.5h.01"/></svg></span>
+        <h3>Escritórios contábeis</h3>
+        <p>O DP da sua carteira, operado nos bastidores.</p>
+        <ul><li>Assumimos a folha dos seus clientes</li><li>eSocial, FGTS Digital e DCTFWeb</li><li>A relação com o cliente continua sua</li></ul>
+        <a class="seg-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20um%20escrit%C3%B3rio%20cont%C3%A1bil.%20Quero%20saber%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20do%20DP." target="_blank" rel="noopener">Falar sobre o meu caso <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="seg-card">
+        <span class="seg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M12 17.5s-3-1.9-3-3.9a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2-3 3.9-3 3.9z"/></svg></span>
+        <h3>Empregador doméstico</h3>
+        <p>Babá, cuidador ou caseiro registrado do jeito certo.</p>
+        <ul><li>eSocial Doméstico todo mês</li><li>Guia DAE emitida no prazo</li><li>Férias, 13º e rescisão calculados</li></ul>
+        <a class="seg-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20empregado%28a%29%20dom%C3%A9stico%28a%29.%20Quero%20saber%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20do%20DP." target="_blank" rel="noopener">Falar sobre o meu caso <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="seg-card">
+        <span class="seg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2"/><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2"/><path d="M3 13h18"/></svg></span>
+        <h3>MEI com funcionário</h3>
+        <p>Seu funcionário registrado e em dia, sem dor de cabeça.</p>
+        <ul><li>Folha e guias todo mês</li><li>Férias e 13º calculados</li><li>Tudo enviado ao eSocial</li></ul>
+        <a class="seg-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Sou%20MEI%20e%20tenho%20funcion%C3%A1rio.%20Quero%20saber%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20do%20DP." target="_blank" rel="noopener">Falar sobre o meu caso <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="seg-card">
+        <span class="seg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6 1.5 0 2.8.4 3.9 1.1"/><path d="M15.5 13.5h5a1 1 0 0 1 1 1V20h-7v-5.5a1 1 0 0 1 1-1z"/><path d="M17 13.5v-1a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v1"/></svg></span>
+        <h3>MEI sem funcionário</h3>
+        <p>Vai contratar o primeiro funcionário? Comece certo.</p>
+        <ul><li>Quanto ele vai custar de verdade</li><li>Registro e documentos da admissão</li><li>Rotina mensal pronta desde o 1º mês</li></ul>
+        <a class="seg-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Sou%20MEI%20e%20quero%20contratar%20meu%20primeiro%20funcion%C3%A1rio.%20Quero%20saber%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20do%20DP." target="_blank" rel="noopener">Falar sobre o meu caso <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="seg-card">
+        <span class="seg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5v5a4 4 0 0 0 8 0v-5"/><path d="M4.5 3.5H6M14 3.5h1.5"/><path d="M10 12.5v2.5a4.5 4.5 0 0 0 9 0v-1.5"/><circle cx="19" cy="11.5" r="2"/></svg></span>
+        <h3>Consultórios e clínicas</h3>
+        <p>Sua equipe de saúde com a folha em ordem.</p>
+        <ul><li>Recepção, técnicos e auxiliares</li><li>Piso e convenção da categoria</li><li>Plantões e escalas calculados</li></ul>
+        <a class="seg-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20um%20consult%C3%B3rio/cl%C3%ADnica.%20Quero%20saber%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20do%20DP." target="_blank" rel="noopener">Falar sobre o meu caso <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="seg-card">
+        <span class="seg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5h2.5l2.3 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.1L20.8 8H6.1"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg></span>
+        <h3>Mercados e comércio</h3>
+        <p>Turnos, domingos e feriados calculados certo.</p>
+        <ul><li>Escalas e revezamento</li><li>Horas extras e banco de horas</li><li>Alta rotatividade sem atraso</li></ul>
+        <a class="seg-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20um%20mercado/com%C3%A9rcio.%20Quero%20saber%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20do%20DP." target="_blank" rel="noopener">Falar sobre o meu caso <span aria-hidden="true">→</span></a>
+      </article>
     </div>
   </div>
 </section>
