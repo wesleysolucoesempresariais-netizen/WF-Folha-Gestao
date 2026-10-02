@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cálculo de Rescisão | WF Folha &amp; Gestão</title>
+<meta name="description" content="Envie os dados do desligamento e receba o cálculo da rescisão trabalhista conferido por especialista em Departamento Pessoal.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#084D6E">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../icon-512.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --bg:#FBFCFC; --bg-alt:#EEF1F3; --surface:#FFFFFF;
+    --ink:#1A1A1A; --ink-soft:#4C5A61; --ink-faint:#646E73;
+    --petrol:#084D6E; --petrol-tint:#E7EEF2; --steel:#94ADBB;
+    --border:#DCE3E6; --border-strong:#C3CFD3;
+    --danger:#B42318; --danger-bg:#FEF3F2;
+    --shadow:0 1px 2px rgba(8,77,110,0.06), 0 12px 28px -16px rgba(8,77,110,0.18);
+    --radius-s:4px; --radius-m:8px;
+    --font-display:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
+    --font-body:'Helvetica Neue',Helvetica,Arial,-apple-system,BlinkMacSystemFont,sans-serif;
+    --brand:#084D6E;
+    --mark:url("data:image/png;base64,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");
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1417; --bg-alt:#141C20; --surface:#131B1F;
+      --ink:#EDF0F1; --ink-soft:#AEBBC1; --ink-faint:#7E8C92;
+      --petrol:#5FA0C4; --petrol-tint:#16262E;
+      --border:#263136; --border-strong:#3A4A51;
+      --danger:#F97066; --danger-bg:#2A1715;
+      --shadow:0 1px 2px rgba(0,0,0,0.3), 0 16px 32px -18px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1417; --bg-alt:#141C20; --surface:#131B1F;
+    --ink:#EDF0F1; --ink-soft:#AEBBC1; --ink-faint:#7E8C92;
+    --petrol:#5FA0C4; --petrol-tint:#16262E;
+    --border:#263136; --border-strong:#3A4A51;
+    --danger:#F97066; --danger-bg:#2A1715;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:1rem; line-height:1.5;}
+  a{color:var(--petrol);}
+  .wrap{max-width:760px; margin:0 auto; padding:0 16px;}
+
+  header{border-bottom:1px solid var(--border); background:var(--surface);}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px;}
+  .brand-lockup{display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;}
+  .brand-mark{flex:none; width:32px; height:32px; background-color:var(--petrol); -webkit-mask:var(--mark) center/contain no-repeat; mask:var(--mark) center/contain no-repeat;}
+  .brand{display:flex; flex-direction:column; line-height:1.1;}
+  .brand-name{font-family:var(--font-display); font-weight:800; font-size:1.05rem; text-transform:uppercase;}
+  .brand-sub{font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; margin-top:3px;}
+  .nav-link{font-family:var(--font-display); font-weight:600; font-size:0.88rem; text-decoration:none; color:var(--ink-soft);}
+
+  .intro{padding:36px 0 20px;}
+  .eyebrow{font-family:var(--font-display); font-weight:700; font-size:0.74rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--petrol);}
+  h1{font-family:var(--font-display); font-weight:800; font-size:clamp(1.6rem,4.4vw,2.2rem); line-height:1.15; margin:8px 0 10px; letter-spacing:-0.01em;}
+  .intro p{color:var(--ink-soft); margin:0; max-width:60ch;}
+  .intro-points{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; padding:0; list-style:none; font-size:0.88rem; color:var(--ink-soft);}
+  .intro-points li{display:flex; align-items:center; gap:7px;}
+  .intro-points li::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--petrol);}
+
+  .stepper{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:8px 0 18px; padding:0; list-style:none;}
+  .stepper li{font-family:var(--font-display); font-size:0.74rem; font-weight:600; color:var(--ink-faint); border-top:3px solid var(--border); padding-top:7px;}
+  .stepper li.done{color:var(--ink-soft); border-color:var(--steel);}
+  .stepper li.current{color:var(--petrol); border-color:var(--petrol);}
+  .stepper .n{display:block; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;}
+  @media (max-width:520px){ .stepper .t{display:none;} .stepper li.current .t{display:inline;} }
+
+  .card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-m); box-shadow:var(--shadow); padding:24px;}
+  @media (max-width:520px){ .card{padding:18px 16px;} }
+  fieldset{border:0; margin:0; padding:0; min-width:0;}
+  .step{display:none;}
+  .step.active{display:block;}
+  .step h2{font-family:var(--font-display); font-weight:700; font-size:1.2rem; margin:0 0 4px;}
+  .step .lead{color:var(--ink-soft); font-size:0.92rem; margin:0 0 18px;}
+  .group-title{font-family:var(--font-display); font-weight:700; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin:22px 0 10px; padding-top:16px; border-top:1px solid var(--border);}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px 16px;}
+  .grid-3{grid-template-columns:2fr 1fr 1fr;}
+  .full{grid-column:1/-1;}
+  @media (max-width:600px){ .grid, .grid-3{grid-template-columns:1fr;} }
+
+  .field label, .field .label{display:block; font-family:var(--font-display); font-weight:600; font-size:0.88rem; margin-bottom:5px;}
+  .opt{font-weight:400; color:var(--ink-faint); font-size:0.8rem;}
+  .hint{display:block; font-size:0.8rem; color:var(--ink-faint); margin-top:4px;}
+  input[type=text], input[type=email], input[type=tel], input[type=date], input[type=number], select, textarea{
+    width:100%; font:inherit; font-size:1rem; color:var(--ink); background:var(--surface);
+    border:1px solid var(--border-strong); border-radius:var(--radius-s); padding:10px 12px; min-height:44px;
+  }
+  textarea{min-height:90px; resize:vertical;}
+  input:focus, select:focus, textarea:focus{outline:2px solid var(--petrol); outline-offset:1px; border-color:var(--petrol);}
+  .money{position:relative;}
+  .money span{position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--ink-faint); font-size:0.92rem; pointer-events:none;}
+  .money input{padding-left:38px;}
+  .field.invalid input, .field.invalid select{border-color:var(--danger);}
+  .err{display:none; color:var(--danger); font-size:0.8rem; margin-top:4px;}
+  .field.invalid .err{display:block;}
+
+  .choices{display:grid; gap:8px;}
+  .choice{display:flex; gap:10px; align-items:flex-start; border:1px solid var(--border-strong); border-radius:var(--radius-s); padding:11px 12px; cursor:pointer; background:var(--surface);}
+  .choice:hover{border-color:var(--petrol);}
+  .choice input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
+  .choice strong{display:block; font-family:var(--font-display); font-weight:600; font-size:0.92rem;}
+  .choice small{display:block; color:var(--ink-faint); font-size:0.8rem;}
+  .choice:has(input:checked){border-color:var(--petrol); background:var(--petrol-tint);}
+  .field label.choice, .field label.check{display:flex; margin-bottom:0; font-family:var(--font-body); font-weight:400; font-size:0.92rem;}
+  .choices.two{grid-template-columns:1fr 1fr;}
+  @media (max-width:600px){ .choices.two{grid-template-columns:1fr;} }
+  .check{display:flex; gap:10px; align-items:flex-start; font-size:0.92rem; cursor:pointer;}
+  .check input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
+  .aviso-calculo{border-left:4px solid var(--petrol); color:var(--ink); line-height:1.55;}
+  .aviso-calculo strong{display:block; font-family:var(--font-display); font-size:0.92rem; margin-bottom:4px;}
+  .hidden{display:none !important;}
+  .note{background:var(--petrol-tint); border-radius:var(--radius-s); padding:10px 12px; font-size:0.86rem; color:var(--ink-soft);}
+
+  .actions{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:24px; padding-top:18px; border-top:1px solid var(--border);}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:var(--font-display); font-weight:700; font-size:0.95rem; text-decoration:none; padding:12px 22px; border-radius:var(--radius-s); border:1px solid transparent; cursor:pointer; min-height:46px;}
+  .btn-primary{background:var(--brand); color:#fff;}
+  .btn-primary:hover{filter:brightness(1.1);}
+  .btn-primary[disabled]{opacity:0.6; cursor:wait;}
+  .btn-ghost{background:transparent; border-color:var(--border-strong); color:var(--ink);}
+  .actions .spacer{flex:1;}
+  .form-error{display:none; margin-top:14px; background:var(--danger-bg); color:var(--danger); border-radius:var(--radius-s); padding:10px 12px; font-size:0.9rem;}
+
+  .success{text-align:center; padding:12px 4px;}
+  .success .icon{width:56px; height:56px; border-radius:50%; background:var(--petrol-tint); color:var(--petrol); display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;}
+  .success h2{font-family:var(--font-display); font-weight:800; font-size:1.4rem; margin:6px 0;}
+  .success p{color:var(--ink-soft); max-width:46ch; margin:6px auto;}
+  .protocolo{font-family:var(--font-display); font-weight:700; color:var(--ink);}
+
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
+  footer{color:var(--ink-faint); font-size:0.8rem; padding:28px 16px 40px; text-align:center;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand-lockup" href="../" aria-label="WF Folha &amp; Gestão — início">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand"><span class="brand-name">WF</span><span class="brand-sub">Folha &amp; Gestão</span></span>
+    </a>
+    <a class="nav-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Tenho%20d%C3%BAvidas%20sobre%20o%20c%C3%A1lculo%20de%20rescis%C3%A3o." target="_blank" rel="noopener">Dúvidas? WhatsApp</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="eyebrow">Cálculo de rescisão</span>
+    <h1>Envie os dados do desligamento e receba o cálculo conferido por especialista.</h1>
+    <p>Leva cerca de 5 minutos. Com as informações em mãos, analiso o caso e retorno com o cálculo completo das verbas rescisórias.</p>
+    <ul class="intro-points">
+      <li>Verbas, INSS, IRRF e FGTS</li>
+      <li>Retorno pelo WhatsApp</li>
+      <li>Dados protegidos pela LGPD</li>
+    </ul>
+  </section>
+
+  <ol class="stepper" id="stepper" aria-label="Etapas">
+    <li class="current"><span class="n">Etapa 1</span><span class="t">Empresa</span></li>
+    <li><span class="n">Etapa 2</span><span class="t">Trabalhador</span></li>
+    <li><span class="n">Etapa 3</span><span class="t">Desligamento</span></li>
+    <li><span class="n">Etapa 4</span><span class="t">Complementos</span></li>
+  </ol>
+
+  <form class="card" id="form" novalidate>
+    <div class="hp" aria-hidden="true"><label>Não preencha <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <!-- ETAPA 1 -->
+    <fieldset class="step active" data-step="1">
+      <h2>Quem está solicitando</h2>
+      <p class="lead">Os dados do empregador e de quem vai receber o retorno.</p>
+      <div class="grid">
+        <div class="field full"><label for="empresaNome">Empresa / empregador</label>
+          <input type="text" id="empresaNome" name="empresaNome" required autocomplete="organization" placeholder="Razão social ou nome do empregador">
+          <span class="err">Informe o nome da empresa ou do empregador.</span></div>
+        <div class="field"><label for="empresaDocumento">CNPJ ou CPF do empregador</label>
+          <input type="text" id="empresaDocumento" name="empresaDocumento" required inputmode="numeric" data-mask="doc" placeholder="00.000.000/0000-00">
+          <span class="err">Informe um CNPJ ou CPF válido.</span></div>
+        <div class="field"><label for="solicitanteNome">Seu nome</label>
+          <input type="text" id="solicitanteNome" name="solicitanteNome" required autocomplete="name">
+          <span class="err">Informe seu nome.</span></div>
+        <div class="field"><label for="solicitanteWhatsapp">WhatsApp</label>
+          <input type="tel" id="solicitanteWhatsapp" name="solicitanteWhatsapp" required inputmode="tel" autocomplete="tel" data-mask="tel" placeholder="(81) 99999-9999">
+          <span class="err">Informe um WhatsApp com DDD.</span></div>
+        <div class="field"><label for="solicitanteEmail">E-mail <span class="opt">(opcional)</span></label>
+          <input type="email" id="solicitanteEmail" name="solicitanteEmail" autocomplete="email">
+          <span class="err">E-mail inválido.</span></div>
+      </div>
+      <div class="group-title">Endereço do empregador <span class="opt" style="text-transform:none;letter-spacing:0">(opcional)</span></div>
+      <div class="grid grid-3">
+        <div class="field"><label for="empresaEndereco">Endereço</label><input type="text" id="empresaEndereco" name="empresaEndereco" autocomplete="street-address"></div>
+        <div class="field"><label for="empresaMunicipio">Município</label><input type="text" id="empresaMunicipio" name="empresaMunicipio" autocomplete="address-level2"></div>
+        <div class="field"><label for="empresaUF">UF</label>
+          <select id="empresaUF" name="empresaUF"><option value="">—</option></select></div>
+        <div class="field"><label for="empresaCEP">CEP</label><input type="text" id="empresaCEP" name="empresaCEP" inputmode="numeric" data-mask="cep" placeholder="00000-000" autocomplete="postal-code"></div>
+      </div>
+    </fieldset>
+
+    <!-- ETAPA 2 -->
+    <fieldset class="step" data-step="2">
+      <h2>Trabalhador e contrato</h2>
+      <p class="lead">Use os valores do contracheque mais recente.</p>
+      <div class="grid">
+        <div class="field full"><label for="trabalhadorNome">Nome do trabalhador</label>
+          <input type="text" id="trabalhadorNome" name="trabalhadorNome" required>
+          <span class="err">Informe o nome do trabalhador.</span></div>
+        <div class="field"><label for="trabalhadorCPF">CPF <span class="opt">(opcional)</span></label>
+          <input type="text" id="trabalhadorCPF" name="trabalhadorCPF" inputmode="numeric" data-mask="cpf" placeholder="000.000.000-00">
+          <span class="err">CPF inválido.</span></div>
+        <div class="field"><label for="trabalhadorNascimento">Data de nascimento <span class="opt">(opcional)</span></label>
+          <input type="date" id="trabalhadorNascimento" name="trabalhadorNascimento"></div>
+        <div class="field"><label for="cargo">Cargo / função</label>
+          <input type="text" id="cargo" name="cargo" required>
+          <span class="err">Informe o cargo.</span></div>
+        <div class="field"><label for="admissao">Data de admissão</label>
+          <input type="date" id="admissao" name="admissao" required>
+          <span class="err">Informe a data de admissão.</span></div>
+      </div>
+
+      <div class="group-title">Tipo de contrato</div>
+      <div class="choices" role="radiogroup">
+        <label class="choice"><input type="radio" name="tipoContrato" value="indeterminado" checked><span><strong>Prazo indeterminado</strong><small>Contrato comum, sem data para terminar</small></span></label>
+        <label class="choice"><input type="radio" name="tipoContrato" value="experiencia"><span><strong>Contrato de experiência</strong><small>Até 90 dias</small></span></label>
+        <label class="choice"><input type="radio" name="tipoContrato" value="determinado"><span><strong>Prazo determinado</strong><small>Temporário, safra, obra certa etc.</small></span></label>
+      </div>
+      <div class="field" style="margin-top:12px"><label class="check"><input type="checkbox" name="domestico" value="sim"> <span>É <b>empregado doméstico</b> (eSocial doméstico)</span></label></div>
+      <div class="field" id="boxTermino" style="margin-top:12px"><label for="dataTerminoPrevisto">Data prevista para o término do contrato</label>
+        <input type="date" id="dataTerminoPrevisto" name="dataTerminoPrevisto">
+        <span class="err">Informe a data prevista para o término.</span></div>
+
+      <div class="group-title">Remuneração</div>
+      <div class="grid">
+        <div class="field"><label for="salario">Salário base mensal</label>
+          <div class="money"><span>R$</span><input type="text" id="salario" name="salario" required inputmode="decimal" data-mask="money" placeholder="0,00"></div>
+          <span class="err">Informe o salário.</span></div>
+        <div class="field"><label for="insalubridadeGrau">Adicional de insalubridade</label>
+          <select id="insalubridadeGrau" name="insalubridadeGrau">
+            <option value="0">Não recebe</option><option value="10">Grau mínimo (10%)</option><option value="20">Grau médio (20%)</option><option value="40">Grau máximo (40%)</option>
+          </select></div>
+        <div class="field full"><label class="check"><input type="checkbox" name="periculosidade" value="sim"> <span>Recebe <b>adicional de periculosidade</b> (30%)</span></label></div>
+        <div class="field full"><label class="check"><input type="checkbox" name="jornadaParcial" value="sim"> <span>Trabalha em <b>jornada reduzida</b> (salário proporcional às horas)</span></label></div>
+      </div>
+      <p class="note" style="margin-top:14px">Recebe horas extras, adicional noturno ou comissões? Informe a <b>média mensal dos últimos 12 meses</b> (ou do período, se tiver menos de 1 ano). Deixe em branco o que não se aplica.</p>
+      <div class="grid" style="margin-top:12px">
+        <div class="field"><label for="mediaHorasExtras">Horas extras (média em R$) <span class="opt">(opcional)</span></label>
+          <div class="money"><span>R$</span><input type="text" id="mediaHorasExtras" name="mediaHorasExtras" inputmode="decimal" data-mask="money" placeholder="0,00"></div></div>
+        <div class="field"><label for="mediaAdicionalNoturno">Adicional noturno (média em R$) <span class="opt">(opcional)</span></label>
+          <div class="money"><span>R$</span><input type="text" id="mediaAdicionalNoturno" name="mediaAdicionalNoturno" inputmode="decimal" data-mask="money" placeholder="0,00"></div></div>
+        <div class="field"><label for="mediaComissoes">Comissões (média em R$) <span class="opt">(opcional)</span></label>
+          <div class="money"><span>R$</span><input type="text" id="mediaComissoes" name="mediaComissoes" inputmode="decimal" data-mask="money" placeholder="0,00"></div></div>
+        <div class="field"><label for="mediaOutras">Outras variáveis (média em R$) <span class="opt">(opcional)</span></label>
+          <div class="money"><span>R$</span><input type="text" id="mediaOutras" name="mediaOutras" inputmode="decimal" data-mask="money" placeholder="0,00"></div></div>
+      </div>
+    </fieldset>
+
+    <!-- ETAPA 3 -->
+    <fieldset class="step" data-step="3">
+      <h2>Desligamento</h2>
+      <p class="lead">Como e quando o contrato está terminando.</p>
+      <div class="field"><span class="label">Motivo do desligamento</span>
+        <div class="choices" id="motivos" role="radiogroup">
+          <label class="choice" data-prazo="nao"><input type="radio" name="motivo" value="sem_justa_causa"><span><strong>Dispensa sem justa causa</strong><small>A empresa decidiu desligar</small></span></label>
+          <label class="choice" data-prazo="nao"><input type="radio" name="motivo" value="pedido_demissao"><span><strong>Pedido de demissão</strong><small>O trabalhador pediu para sair</small></span></label>
+          <label class="choice" data-prazo="nao"><input type="radio" name="motivo" value="acordo"><span><strong>Acordo entre as partes</strong><small>Art. 484-A da CLT (demissão consensual)</small></span></label>
+          <label class="choice" data-prazo="ambos"><input type="radio" name="motivo" value="justa_causa"><span><strong>Dispensa por justa causa</strong><small>Falta grave do trabalhador (art. 482 CLT)</small></span></label>
+          <label class="choice" data-prazo="sim"><input type="radio" name="motivo" value="termino_prazo"><span><strong>Término do contrato no prazo</strong><small>O contrato de experiência/prazo chegou ao fim</small></span></label>
+          <label class="choice" data-prazo="sim"><input type="radio" name="motivo" value="antecipada_empregador"><span><strong>Encerramento antecipado pela empresa</strong><small>Antes da data prevista, por decisão da empresa</small></span></label>
+          <label class="choice" data-prazo="sim"><input type="radio" name="motivo" value="antecipada_empregado"><span><strong>Encerramento antecipado pelo trabalhador</strong><small>Antes da data prevista, por decisão do trabalhador</small></span></label>
+        </div>
+        <span class="err">Escolha o motivo do desligamento.</span>
+      </div>
+
+      <div class="grid" style="margin-top:16px">
+        <div class="field"><label for="dataDesligamento">Último dia de trabalho</label>
+          <input type="date" id="dataDesligamento" name="dataDesligamento" required>
+          <span class="hint">Se o aviso for trabalhado, é o último dia do aviso.</span>
+          <span class="err">Informe uma data posterior à admissão.</span></div>
+      </div>
+
+      <div class="field" id="boxAviso" style="margin-top:16px"><span class="label">Aviso prévio</span>
+        <div class="choices two" id="avisoOpcoes" role="radiogroup">
+          <label class="choice" data-para="sem_justa_causa acordo"><input type="radio" name="aviso" value="indenizado"><span><strong>Indenizado</strong><small>Saiu sem cumprir o aviso; a empresa paga</small></span></label>
+          <label class="choice" data-para="sem_justa_causa acordo pedido_demissao"><input type="radio" name="aviso" value="trabalhado"><span><strong>Trabalhado</strong><small>Cumpriu o aviso trabalhando</small></span></label>
+          <label class="choice" data-para="pedido_demissao"><input type="radio" name="aviso" value="dispensado"><span><strong>Dispensado pela empresa</strong><small>A empresa liberou de cumprir</small></span></label>
+          <label class="choice" data-para="pedido_demissao"><input type="radio" name="aviso" value="nao_cumprido"><span><strong>Não cumprido</strong><small>Saiu sem cumprir e sem liberação</small></span></label>
+        </div>
+        <span class="err">Escolha a situação do aviso prévio.</span>
+      </div>
+      <div class="field hidden" id="boxDataAviso" style="margin-top:12px"><label for="dataAviso">Data em que o aviso foi dado</label>
+        <input type="date" id="dataAviso" name="dataAviso">
+        <span class="err">Informe a data do aviso.</span></div>
+    </fieldset>
+
+    <!-- ETAPA 4 -->
+    <fieldset class="step" data-step="4">
+      <h2>Complementos</h2>
+      <p class="lead">Quanto mais completo, mais preciso fica o cálculo. Se não souber algum item, deixe em branco.</p>
+      <div class="grid">
+        <div class="field"><label for="periodosFeriasVencidas">Férias vencidas não tiradas</label>
+          <select id="periodosFeriasVencidas" name="periodosFeriasVencidas">
+            <option value="0">Nenhuma</option><option value="1">1 período (1 ano)</option><option value="2">2 períodos</option><option value="3">3 períodos</option>
+          </select>
+          <span class="hint">Anos completos de trabalho sem tirar férias.</span></div>
+        <div class="field"><label for="faltasPeriodoAtual">Faltas sem justificativa <span class="opt">(último ano)</span></label>
+          <input type="number" id="faltasPeriodoAtual" name="faltasPeriodoAtual" min="0" max="365" inputmode="numeric" placeholder="0"></div>
+        <div class="field"><label for="dependentes">Dependentes para Imposto de Renda</label>
+          <input type="number" id="dependentes" name="dependentes" min="0" max="20" inputmode="numeric" placeholder="0"></div>
+        <div class="field"><label for="saldoFgts">Saldo do FGTS <span class="opt">(opcional)</span></label>
+          <div class="money"><span>R$</span><input type="text" id="saldoFgts" name="saldoFgts" inputmode="decimal" data-mask="money" placeholder="0,00"></div>
+          <span class="hint">Pelo extrato do FGTS, para a multa ficar exata.</span></div>
+      </div>
+
+      <div class="group-title">Descontos já previstos</div>
+      <div class="grid">
+        <div class="field"><label for="adiantamentoSalarial">Adiantamento salarial (vale) <span class="opt">(opcional)</span></label>
+          <div class="money"><span>R$</span><input type="text" id="adiantamentoSalarial" name="adiantamentoSalarial" inputmode="decimal" data-mask="money" placeholder="0,00"></div></div>
+        <div class="field"><label for="adiantamento13">1ª parcela do 13º já paga <span class="opt">(opcional)</span></label>
+          <div class="money"><span>R$</span><input type="text" id="adiantamento13" name="adiantamento13" inputmode="decimal" data-mask="money" placeholder="0,00"></div></div>
+        <div class="field"><label for="outrosDescontos">Outros descontos <span class="opt">(opcional)</span></label>
+          <div class="money"><span>R$</span><input type="text" id="outrosDescontos" name="outrosDescontos" inputmode="decimal" data-mask="money" placeholder="0,00"></div></div>
+        <div class="field"><label for="outrosDescontosDescricao">Quais? <span class="opt">(opcional)</span></label>
+          <input type="text" id="outrosDescontosDescricao" name="outrosDescontosDescricao" placeholder="Ex.: empréstimo consignado, vale-transporte"></div>
+      </div>
+
+      <div class="group-title">Situações especiais</div>
+      <div class="choices">
+        <label class="check"><input type="checkbox" name="gestante" value="sim"> <span>Trabalhadora gestante ou em licença-maternidade</span></label>
+        <label class="check"><input type="checkbox" name="afastadoAcidente" value="sim"> <span>Afastada(o) pelo INSS por acidente/doença do trabalho nos últimos 12 meses</span></label>
+        <label class="check"><input type="checkbox" name="estabilidadeOutra" value="sim"> <span>Membro da CIPA, dirigente sindical ou outra estabilidade</span></label>
+        <label class="check"><input type="checkbox" name="convencaoColetiva" value="sim"> <span>A categoria tem convenção coletiva com regras de rescisão</span></label>
+      </div>
+
+      <div class="field" style="margin-top:16px"><label for="observacoes">Observações <span class="opt">(opcional)</span></label>
+        <textarea id="observacoes" name="observacoes" placeholder="Algo que eu deva saber: horas extras não pagas, afastamentos, acordos feitos etc."></textarea></div>
+
+      <div class="note aviso-calculo" style="margin-top:20px">
+        <strong>Importante sobre o cálculo</strong>
+        O cálculo é feito <b>exclusivamente com base nas informações enviadas neste formulário</b>. Dados incompletos ou diferentes dos documentos (contracheques, ponto, extrato do FGTS, convenção coletiva) podem alterar os valores. Por isso, o resultado é uma <b>estimativa</b>, que será conferida com a documentação antes de qualquer pagamento ou homologação.
+      </div>
+      <div class="field" style="margin-top:14px"><label class="check"><input type="checkbox" id="declaracao" name="declaracao" value="sim" required> <span>Declaro que as informações prestadas são verdadeiras e estou ciente de que o cálculo será elaborado com base nelas.</span></label>
+        <span class="err">É preciso confirmar a declaração para enviar.</span></div>
+
+      <div class="field" style="margin-top:12px"><label class="check"><input type="checkbox" id="lgpd" name="lgpd" value="sim" required> <span>Autorizo o uso destes dados exclusivamente para a elaboração do cálculo e o contato sobre este serviço, conforme a LGPD (Lei 13.709/2018).</span></label>
+        <span class="err">É preciso autorizar o uso dos dados para enviar.</span></div>
+    </fieldset>
+
+    <div class="actions" id="actions">
+      <button type="button" class="btn btn-ghost hidden" id="btnVoltar">Voltar</button>
+      <span class="spacer"></span>
+      <button type="button" class="btn btn-primary" id="btnAvancar">Continuar</button>
+      <button type="submit" class="btn btn-primary hidden" id="btnEnviar">Enviar para cálculo</button>
+    </div>
+    <div class="form-error" id="formError" role="alert"></div>
+
+    <div class="success hidden" id="success" tabindex="-1">
+      <div class="icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h2>Recebemos seus dados</h2>
+      <p>Vou analisar as informações e entro em contato pelo WhatsApp informado com o cálculo e os próximos passos.</p>
+      <p class="note aviso-calculo" style="text-align:left;max-width:52ch;margin:16px auto">Lembrando: o cálculo é elaborado com base nas informações que você enviou. Se algum dado mudar ou estiver diferente dos documentos, os valores podem ser ajustados na conferência final.</p>
+      <p>Protocolo: <span class="protocolo" id="protocolo">—</span></p>
+      <p style="margin-top:18px"><a class="btn btn-ghost" href="../">Voltar ao site</a></p>
+    </div>
+  </form>
+</main>
+
+<footer>© <span id="year"></span> WF Folha &amp; Gestão · Terceirização de Departamento Pessoal · Seus dados são tratados conforme a LGPD.</footer>
+
+<script>
+(function(){
+  // URL do App da Web do Google Apps Script (Implantar → App da Web)
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbw1_9Pu1NYyqe5U8DXfUY-EWIp74a3WHCYW0dN6nZmC20pTyPvEky36CuVqFy_s-v63mQ/exec';
+
+  var form = document.getElementById('form');
+  var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+  var stepperItems = document.querySelectorAll('#stepper li');
+  var btnVoltar = document.getElementById('btnVoltar');
+  var btnAvancar = document.getElementById('btnAvancar');
+  var btnEnviar = document.getElementById('btnEnviar');
+  var formError = document.getElementById('formError');
+  var atual = 0;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // UFs
+  var ufs = 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ');
+  var selUF = document.getElementById('empresaUF');
+  ufs.forEach(function(u){ var o = document.createElement('option'); o.value = u; o.textContent = u; selUF.appendChild(o); });
+
+  // Máscaras
+  function digits(s){ return (s || '').replace(/\D/g, ''); }
+  var masks = {
+    doc: function(v){ var d = digits(v).slice(0,14);
+      if (d.length <= 11) return d.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+      return d.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\d{4})(\d)/,'$1-$2'); },
+    cpf: function(v){ var d = digits(v).slice(0,11); return d.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'); },
+    tel: function(v){ var d = digits(v).slice(0,11);
+      if (d.length <= 2) return d.length ? '(' + d : '';
+      if (d.length <= 6) return '(' + d.slice(0,2) + ') ' + d.slice(2);
+      if (d.length <= 10) return '(' + d.slice(0,2) + ') ' + d.slice(2,6) + '-' + d.slice(6);
+      return '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7); },
+    cep: function(v){ var d = digits(v).slice(0,8); return d.replace(/(\d{5})(\d)/,'$1-$2'); },
+    money: function(v){ var d = digits(v).replace(/^0+/, '').slice(0,11); if (!d) return '';
+      while (d.length < 3) d = '0' + d;
+      var inteiro = d.slice(0,-2).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); return inteiro + ',' + d.slice(-2); }
+  };
+  form.querySelectorAll('[data-mask]').forEach(function(el){
+    el.addEventListener('input', function(){ el.value = masks[el.dataset.mask](el.value); });
+  });
+
+  function val(name){ var el = form.elements[name]; if (!el) return ''; if (el.length && !el.tagName) { for (var i=0;i<el.length;i++) if (el[i].checked) return el[i].value; return ''; } return el.type === 'checkbox' ? (el.checked ? el.value : '') : el.value.trim(); }
+  function moneyNum(s){ return parseFloat(String(s || '').replace(/\./g,'').replace(',','.')) || 0; }
+
+  // Regras condicionais
+  function ehPrazo(){ var t = val('tipoContrato'); return t === 'experiencia' || t === 'determinado'; }
+  function atualizarCondicionais(){
+    var prazo = ehPrazo();
+    var motivo = val('motivo');
+    document.getElementById('boxTermino').classList.toggle('hidden', !prazo);
+    // motivos conforme tipo de contrato
+    form.querySelectorAll('#motivos .choice').forEach(function(c){
+      // contrato a prazo: término, antecipadas e justa causa; prazo indeterminado: os demais
+      var p = c.dataset.prazo;
+      var show = p === 'ambos' || (prazo ? p === 'sim' : p === 'nao');
+      c.classList.toggle('hidden', !show);
+      if (!show && c.querySelector('input').checked) c.querySelector('input').checked = false;
+    });
+    motivo = val('motivo');
+    // aviso
+    var temAviso = ['sem_justa_causa','acordo','pedido_demissao'].indexOf(motivo) >= 0;
+    document.getElementById('boxAviso').classList.toggle('hidden', !temAviso);
+    form.querySelectorAll('#avisoOpcoes .choice').forEach(function(c){
+      var show = (c.dataset.para || '').split(' ').indexOf(motivo) >= 0;
+      c.classList.toggle('hidden', !show);
+      if (!show && c.querySelector('input').checked) c.querySelector('input').checked = false;
+    });
+    var trabalhado = temAviso && val('aviso') === 'trabalhado' && motivo !== 'pedido_demissao';
+    document.getElementById('boxDataAviso').classList.toggle('hidden', !trabalhado);
+  }
+  form.addEventListener('change', atualizarCondicionais);
+  atualizarCondicionais();
+
+  // Validação por etapa
+  function setInvalid(el, bad){ var f = el.closest('.field'); if (f) f.classList.toggle('invalid', !!bad); return !bad; }
+  function cpfValido(c){ c = digits(c); if (c.length !== 11 || /^(\d)\1+$/.test(c)) return false;
+    for (var t=9;t<11;t++){ var s=0; for (var i=0;i<t;i++) s += +c[i]*(t+1-i); if (((s*10)%11)%10 !== +c[t]) return false; } return true; }
+  function cnpjValido(c){ c = digits(c); if (c.length !== 14 || /^(\d)\1+$/.test(c)) return false;
+    var calc = function(n){ var s=0, p=n-7; for (var i=0;i<n;i++){ s += +c[i]*p--; if (p<2) p=9; } var r = s%11; return r<2?0:11-r; };
+    return calc(12) === +c[12] && calc(13) === +c[13]; }
+
+  function validar(i){
+    var ok = true; var el;
+    function req(name, cond){ var e = form.elements[name]; var good = cond !== undefined ? cond : !!val(name); if (!setInvalid(e.length && !e.tagName ? e[0] : e, !good)) { ok = false; el = el || (e.length && !e.tagName ? e[0] : e); } }
+    if (i === 0){
+      req('empresaNome');
+      var doc = digits(val('empresaDocumento')); req('empresaDocumento', doc.length === 11 ? cpfValido(doc) : cnpjValido(doc));
+      req('solicitanteNome');
+      req('solicitanteWhatsapp', digits(val('solicitanteWhatsapp')).length >= 10);
+      var em = val('solicitanteEmail'); req('solicitanteEmail', !em || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em));
+    }
+    if (i === 1){
+      req('trabalhadorNome'); req('cargo'); req('admissao');
+      var cpf = val('trabalhadorCPF'); req('trabalhadorCPF', !cpf || cpfValido(cpf));
+      req('salario', moneyNum(val('salario')) > 0);
+      if (ehPrazo()) req('dataTerminoPrevisto', !!val('dataTerminoPrevisto') && val('dataTerminoPrevisto') > val('admissao'));
+      else setInvalid(form.elements.dataTerminoPrevisto, false);
+    }
+    if (i === 2){
+      var m = val('motivo'); var motivoEl = document.getElementById('motivos');
+      motivoEl.closest('.field').classList.toggle('invalid', !m); if (!m) { ok = false; el = el || motivoEl.querySelector('input'); }
+      req('dataDesligamento', !!val('dataDesligamento') && val('dataDesligamento') >= val('admissao'));
+      if (['sem_justa_causa','acordo','pedido_demissao'].indexOf(m) >= 0){
+        var a = val('aviso'); var box = document.getElementById('boxAviso');
+        box.classList.toggle('invalid', !a); if (!a) { ok = false; el = el || box.querySelector('input'); }
+        if (a === 'trabalhado' && m !== 'pedido_demissao') req('dataAviso', !!val('dataAviso') && val('dataAviso') <= val('dataDesligamento'));
+      }
+    }
+    if (i === 3){ req('declaracao', form.elements.declaracao.checked); req('lgpd', form.elements.lgpd.checked); }
+    if (!ok && el) el.focus({preventScroll:false});
+    return ok;
+  }
+
+  function mostrar(i){
+    steps.forEach(function(s, k){ s.classList.toggle('active', k === i); });
+    stepperItems.forEach(function(li, k){ li.classList.toggle('current', k === i); li.classList.toggle('done', k < i); });
+    btnVoltar.classList.toggle('hidden', i === 0);
+    btnAvancar.classList.toggle('hidden', i === steps.length - 1);
+    btnEnviar.classList.toggle('hidden', i !== steps.length - 1);
+    formError.style.display = 'none';
+    atual = i;
+    document.getElementById('stepper').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  btnAvancar.addEventListener('click', function(){ if (validar(atual)) mostrar(atual + 1); });
+  btnVoltar.addEventListener('click', function(){ mostrar(atual - 1); });
+  form.addEventListener('input', function(e){ var f = e.target.closest('.field'); if (f) f.classList.remove('invalid'); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    for (var i = 0; i < steps.length; i++) { if (!validar(i)) { mostrar(i); validar(i); return; } }
+    var dados = {};
+    Array.prototype.forEach.call(form.elements, function(el){
+      if (!el.name) return;
+      if (el.type === 'radio') { if (el.checked) dados[el.name] = el.value; return; }
+      if (el.type === 'checkbox') { dados[el.name] = el.checked; return; }
+      dados[el.name] = el.value.trim();
+    });
+    if (!ehPrazo()) dados.dataTerminoPrevisto = '';
+    dados.origem = location.href;
+    btnEnviar.disabled = true; btnEnviar.textContent = 'Enviando…';
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(dados) })
+      .then(function(r){ return r.json(); })
+      .then(function(r){
+        if (!r || !r.ok) throw new Error((r && r.erro) || 'Falha no envio');
+        document.getElementById('protocolo').textContent = r.protocolo || '—';
+        steps.forEach(function(s){ s.classList.remove('active'); });
+        document.getElementById('actions').classList.add('hidden');
+        document.getElementById('stepper').classList.add('hidden');
+        var ok = document.getElementById('success'); ok.classList.remove('hidden'); ok.focus();
+        window.scrollTo({top:0, behavior:'smooth'});
+      })
+      .catch(function(){
+        formError.innerHTML = 'Não foi possível enviar agora. Tente de novo em instantes ou <a href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Tentei%20enviar%20o%20formul%C3%A1rio%20de%20c%C3%A1lculo%20de%20rescis%C3%A3o." target="_blank" rel="noopener">fale comigo pelo WhatsApp</a>.';
+        formError.style.display = 'block';
+        btnEnviar.disabled = false; btnEnviar.textContent = 'Enviar para cálculo';
+      });
+  });
+})();
+</script>
+</body>
+</html>
