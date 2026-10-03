@@ -111,6 +111,7 @@
   .choice strong{display:block; font-family:var(--font-display); font-weight:600; font-size:0.92rem;}
   .choice small{display:block; color:var(--ink-faint); font-size:0.8rem;}
   .choice:has(input:checked){border-color:var(--petrol); background:var(--petrol-tint);}
+  .field label.periodo{display:flex; margin-bottom:0; font-family:var(--font-body); font-weight:400;}
   .field label.choice, .field label.check{display:flex; margin-bottom:0; font-family:var(--font-body); font-weight:400; font-size:0.92rem;}
   .choices.two{grid-template-columns:1fr 1fr;}
   @media (max-width:600px){ .choices.two{grid-template-columns:1fr;} }
@@ -118,6 +119,16 @@
   .check input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
   .aviso-calculo{border-left:4px solid var(--petrol); color:var(--ink); line-height:1.55;}
   .aviso-calculo strong{display:block; font-family:var(--font-display); font-size:0.92rem; margin-bottom:4px;}
+  .ferias-lista{display:grid; gap:8px;}
+  .periodo{display:flex; gap:10px; align-items:flex-start; border:1px solid var(--border-strong); border-radius:var(--radius-s); padding:10px 12px; cursor:pointer; background:var(--surface);}
+  .periodo input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
+  .periodo:has(input:checked){border-color:var(--petrol); background:var(--petrol-tint);}
+  .periodo strong{display:block; font-family:var(--font-display); font-weight:600; font-size:0.92rem;}
+  .periodo small{display:block; color:var(--ink-soft); font-size:0.8rem;}
+  .tag{display:inline-block; font-family:var(--font-display); font-weight:700; font-size:0.7rem; letter-spacing:0.04em; text-transform:uppercase; border-radius:3px; padding:2px 6px; margin-top:4px;}
+  .tag-dobro{background:var(--danger-bg); color:var(--danger);}
+  .tag-prazo{background:var(--petrol-tint); color:var(--petrol);}
+  .periodo-atual{font-size:0.84rem; color:var(--ink-soft); border:1px dashed var(--border-strong); border-radius:var(--radius-s); padding:9px 12px;}
   .hidden{display:none !important;}
   .note{background:var(--petrol-tint); border-radius:var(--radius-s); padding:10px 12px; font-size:0.86rem; color:var(--ink-soft);}
 
@@ -304,11 +315,11 @@
       <h2>Complementos</h2>
       <p class="lead">Quanto mais completo, mais preciso fica o cálculo. Se não souber algum item, deixe em branco.</p>
       <div class="grid">
-        <div class="field"><label for="periodosFeriasVencidas">Férias vencidas não tiradas</label>
-          <select id="periodosFeriasVencidas" name="periodosFeriasVencidas">
-            <option value="0">Nenhuma</option><option value="1">1 período (1 ano)</option><option value="2">2 períodos</option><option value="3">3 períodos</option>
-          </select>
-          <span class="hint">Anos completos de trabalho sem tirar férias.</span></div>
+        <div class="field full"><span class="label">Férias vencidas não tiradas</span>
+          <span class="hint" style="margin:0 0 8px">Pela admissão e pelo último dia de trabalho, estes são os períodos aquisitivos completos. Marque apenas os que o trabalhador <b>não</b> tirou.</span>
+          <div class="ferias-lista" id="feriasLista"></div>
+          <input type="hidden" id="periodosFeriasVencidas" name="periodosFeriasVencidas" value="0">
+        </div>
         <div class="field"><label for="faltasPeriodoAtual">Faltas sem justificativa <span class="opt">(último ano)</span></label>
           <input type="number" id="faltasPeriodoAtual" name="faltasPeriodoAtual" min="0" max="365" inputmode="numeric" placeholder="0"></div>
         <div class="field"><label for="dependentes">Dependentes para Imposto de Renda</label>
@@ -446,6 +457,41 @@
   form.addEventListener('change', atualizarCondicionais);
   atualizarCondicionais();
 
+  // Férias: períodos aquisitivos a partir da admissão e do desligamento
+  function pd(sv){ if(!sv) return null; var p = sv.split('-').map(Number); return new Date(Date.UTC(p[0], p[1]-1, p[2])); }
+  function addM(dt, n){ var y = dt.getUTCFullYear(), m = dt.getUTCMonth() + n, dd = dt.getUTCDate(); var ult = new Date(Date.UTC(y, m+1, 0)).getUTCDate(); return new Date(Date.UTC(y, m, Math.min(dd, ult))); }
+  function addD(dt, n){ return new Date(dt.getTime() + n*864e5); }
+  function br(dt){ return ('0'+dt.getUTCDate()).slice(-2) + '/' + ('0'+(dt.getUTCMonth()+1)).slice(-2) + '/' + dt.getUTCFullYear(); }
+  var marcadosFerias = {};
+  function montarFerias(){
+    var box = document.getElementById('feriasLista');
+    box.querySelectorAll('input:checked').forEach(function(i){ marcadosFerias[i.dataset.chave] = true; });
+    box.querySelectorAll('input:not(:checked)').forEach(function(i){ delete marcadosFerias[i.dataset.chave]; });
+    var adm = pd(val('admissao')), fim = pd(val('dataDesligamento'));
+    box.innerHTML = '';
+    if (!adm || !fim || fim < adm) { box.innerHTML = '<div class="periodo-atual">Informe a admissão e o último dia de trabalho para listar os períodos.</div>'; return; }
+    var k = 0; while (addM(adm, 12*(k+1)) <= fim) k++;
+    var inicioAtual = addM(adm, 12*k);
+    var html = '';
+    var maxListar = Math.min(k, 5);
+    for (var j = 1; j <= maxListar; j++) {
+      var ini = addM(inicioAtual, -12*j), fimP = addD(addM(inicioAtual, -12*(j-1)), -1), conc = addD(addM(ini, 24), -1);
+      var chave = ini.toISOString().slice(0,10);
+      var dobro = fim > conc;
+      html += '<label class="periodo"><input type="checkbox" class="chk-periodo" value="' + j + '" data-chave="' + chave + '"' + (marcadosFerias[chave] ? ' checked' : '') + '>' +
+        '<span><strong>Período aquisitivo ' + br(ini) + ' a ' + br(fimP) + '</strong>' +
+        '<small>Prazo para conceder (período concessivo): até ' + br(conc) + '</small>' +
+        (dobro ? '<span class="tag tag-dobro">Prazo vencido — pagamento em dobro</span>' : '<span class="tag tag-prazo">Dentro do prazo de concessão</span>') +
+        '</span></label>';
+    }
+    if (!k) html += '<div class="periodo-atual">Ainda não há período aquisitivo completo.</div>';
+    html += '<div class="periodo-atual">Período em andamento: ' + br(inicioAtual) + ' a ' + br(fim) + ' — as férias proporcionais são calculadas automaticamente.</div>';
+    box.innerHTML = html;
+  }
+  document.getElementById('admissao').addEventListener('change', montarFerias);
+  document.getElementById('dataDesligamento').addEventListener('change', montarFerias);
+  montarFerias();
+
   // Validação por etapa
   function setInvalid(el, bad){ var f = el.closest('.field'); if (f) f.classList.toggle('invalid', !!bad); return !bad; }
   function cpfValido(c){ c = digits(c); if (c.length !== 11 || /^(\d)\1+$/.test(c)) return false;
@@ -494,6 +540,7 @@
     btnEnviar.classList.toggle('hidden', i !== steps.length - 1);
     formError.style.display = 'none';
     atual = i;
+    if (i === 3) montarFerias();
     document.getElementById('stepper').scrollIntoView({behavior:'smooth', block:'start'});
   }
   btnAvancar.addEventListener('click', function(){ if (validar(atual)) mostrar(atual + 1); });
@@ -505,12 +552,14 @@
     for (var i = 0; i < steps.length; i++) { if (!validar(i)) { mostrar(i); validar(i); return; } }
     var dados = {};
     Array.prototype.forEach.call(form.elements, function(el){
-      if (!el.name) return;
+      if (!el.name || el.classList.contains('chk-periodo')) return;
       if (el.type === 'radio') { if (el.checked) dados[el.name] = el.value; return; }
       if (el.type === 'checkbox') { dados[el.name] = el.checked; return; }
       dados[el.name] = el.value.trim();
     });
     if (!ehPrazo()) dados.dataTerminoPrevisto = '';
+    dados.periodosVencidosLista = Array.prototype.map.call(form.querySelectorAll('.chk-periodo:checked'), function(c){ return Number(c.value); });
+    dados.periodosFeriasVencidas = String(dados.periodosVencidosLista.length);
     dados.origem = location.href;
     btnEnviar.disabled = true; btnEnviar.textContent = 'Enviando…';
     fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(dados) })
