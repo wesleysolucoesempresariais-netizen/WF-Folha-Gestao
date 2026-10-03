@@ -219,10 +219,15 @@
   .nav-cta{display:none;}
   @media (min-width:860px){ .nav-cta{display:inline-flex;} }
   .nav-links-mobile-hide{display:none;}
-  @media (min-width:1100px){ .nav-links-mobile-hide{display:flex;} }
+  @media (min-width:1200px){ .nav-links-mobile-hide{display:flex;} }
   nav.links a{white-space:nowrap;}
-  @media (max-width:1240px){ nav.links{gap:22px;} }
-  @media (max-width:1240px){ nav.links{gap:16px;} nav.links a{font-size:0.88rem;} }
+  /* Cabeçalho: logo e botão nunca encolhem; o menu ajusta o espaçamento à largura da tela */
+  .nav{gap:28px;}
+  .brand-lockup{flex:none;}
+  .brand-sub{white-space:nowrap;}
+  .nav-cta{flex:none;}
+  nav.links{gap:clamp(16px, 1.9vw, 32px); margin-left:auto;}
+  @media (max-width:1279px){ nav.links a{font-size:0.88rem;} }
 
   /* ====== Hero ====== */
   .hero{
@@ -616,7 +621,7 @@
     .mobile-cta{display:inline-flex;}
   }
 
-  @media (max-width:1099px){ .nav-links-mobile-hide{display:none !important;} }
+  @media (max-width:1199px){ .nav-links-mobile-hide{display:none !important;} }
 
   /* ====== Questionário de proposta ====== */
   .quote{
