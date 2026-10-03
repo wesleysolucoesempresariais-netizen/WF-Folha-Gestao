@@ -189,12 +189,12 @@
       <h2>Quem está solicitando</h2>
       <p class="lead">Os dados do empregador e de quem vai receber o retorno.</p>
       <div class="grid">
-        <div class="field full"><label for="empresaNome">Empresa / empregador</label>
-          <input type="text" id="empresaNome" name="empresaNome" required autocomplete="organization" placeholder="Razão social ou nome do empregador">
+        <div class="field full"><label for="empresaNome">Empresa / empregador <span class="opt">(opcional)</span></label>
+          <input type="text" id="empresaNome" name="empresaNome" autocomplete="organization" placeholder="Razão social ou nome do empregador">
           <span class="err">Informe o nome da empresa ou do empregador.</span></div>
-        <div class="field"><label for="empresaDocumento">CNPJ ou CPF do empregador</label>
-          <input type="text" id="empresaDocumento" name="empresaDocumento" required inputmode="numeric" data-mask="doc" placeholder="00.000.000/0000-00">
-          <span class="err">Informe um CNPJ ou CPF válido.</span></div>
+        <div class="field"><label for="empresaDocumento">CNPJ ou CPF do empregador <span class="opt">(opcional)</span></label>
+          <input type="text" id="empresaDocumento" name="empresaDocumento" inputmode="numeric" data-mask="doc" placeholder="00.000.000/0000-00">
+          <span class="err">CNPJ ou CPF inválido. Confira os números ou deixe em branco.</span></div>
         <div class="field"><label for="solicitanteNome">Seu nome</label>
           <input type="text" id="solicitanteNome" name="solicitanteNome" required autocomplete="name">
           <span class="err">Informe seu nome.</span></div>
@@ -504,8 +504,7 @@
     var ok = true; var el;
     function req(name, cond){ var e = form.elements[name]; var good = cond !== undefined ? cond : !!val(name); if (!setInvalid(e.length && !e.tagName ? e[0] : e, !good)) { ok = false; el = el || (e.length && !e.tagName ? e[0] : e); } }
     if (i === 0){
-      req('empresaNome');
-      var doc = digits(val('empresaDocumento')); req('empresaDocumento', doc.length === 11 ? cpfValido(doc) : cnpjValido(doc));
+      var doc = digits(val('empresaDocumento')); req('empresaDocumento', !doc || (doc.length === 11 ? cpfValido(doc) : cnpjValido(doc)));
       req('solicitanteNome');
       req('solicitanteWhatsapp', digits(val('solicitanteWhatsapp')).length >= 10);
       var em = val('solicitanteEmail'); req('solicitanteEmail', !em || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em));
