@@ -56,11 +56,11 @@
   .brand-mark{flex:none; width:32px; height:32px; background-color:var(--petrol); -webkit-mask:var(--mark) center/contain no-repeat; mask:var(--mark) center/contain no-repeat;}
   .brand{display:flex; flex-direction:column; line-height:1.1;}
   .brand-name{font-family:var(--font-display); font-weight:800; font-size:1.05rem; text-transform:uppercase;}
-  .brand-sub{font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; margin-top:3px;}
+  .brand-sub{font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; margin-top:3px;}
   .nav-link{font-family:var(--font-display); font-weight:600; font-size:0.88rem; text-decoration:none; color:var(--ink-soft);}
 
   .intro{padding:36px 0 20px;}
-  .eyebrow{font-family:var(--font-display); font-weight:700; font-size:0.74rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--petrol);}
+  .eyebrow{font-family:var(--font-display); font-weight:700; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--petrol);}
   h1{font-family:var(--font-display); font-weight:800; font-size:clamp(1.6rem,4.4vw,2.2rem); line-height:1.15; margin:8px 0 10px; letter-spacing:-0.01em;}
   .intro p{color:var(--ink-soft); margin:0; max-width:60ch;}
   .intro-points{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; padding:0; list-style:none; font-size:0.88rem; color:var(--ink-soft);}
@@ -68,10 +68,10 @@
   .intro-points li::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--petrol);}
 
   .stepper{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:8px 0 18px; padding:0; list-style:none;}
-  .stepper li{font-family:var(--font-display); font-size:0.74rem; font-weight:600; color:var(--ink-faint); border-top:3px solid var(--border); padding-top:7px;}
+  .stepper li{font-family:var(--font-display); font-size:0.78rem; font-weight:600; color:var(--ink-faint); border-top:3px solid var(--border); padding-top:7px;}
   .stepper li.done{color:var(--ink-soft); border-color:var(--steel);}
   .stepper li.current{color:var(--petrol); border-color:var(--petrol);}
-  .stepper .n{display:block; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;}
+  .stepper .n{display:block; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;}
   @media (max-width:520px){ .stepper .t{display:none;} .stepper li.current .t{display:inline;} }
 
   .card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-m); box-shadow:var(--shadow); padding:24px;}
@@ -117,7 +117,7 @@
   @media (max-width:600px){ .choices.two{grid-template-columns:1fr;} }
   .check{display:flex; gap:10px; align-items:flex-start; font-size:0.92rem; cursor:pointer;}
   .check input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
-  .aviso-calculo{border-left:4px solid var(--petrol); color:var(--ink); line-height:1.55;}
+  .aviso-calculo{border:1px solid var(--border-strong); color:var(--ink); line-height:1.55;}
   .aviso-calculo strong{display:block; font-family:var(--font-display); font-size:0.92rem; margin-bottom:4px;}
   .ferias-lista{display:grid; gap:8px;}
   .periodo{display:flex; gap:10px; align-items:flex-start; border:1px solid var(--border-strong); border-radius:var(--radius-s); padding:10px 12px; cursor:pointer; background:var(--surface);}
@@ -125,7 +125,7 @@
   .periodo:has(input:checked){border-color:var(--petrol); background:var(--petrol-tint);}
   .periodo strong{display:block; font-family:var(--font-display); font-weight:600; font-size:0.92rem;}
   .periodo small{display:block; color:var(--ink-soft); font-size:0.8rem;}
-  .tag{display:inline-block; font-family:var(--font-display); font-weight:700; font-size:0.7rem; letter-spacing:0.04em; text-transform:uppercase; border-radius:3px; padding:2px 6px; margin-top:4px;}
+  .tag{display:inline-block; font-family:var(--font-display); font-weight:700; font-size:0.75rem; letter-spacing:0.04em; text-transform:uppercase; border-radius:3px; padding:2px 6px; margin-top:4px;}
   .tag-dobro{background:var(--danger-bg); color:var(--danger);}
   .tag-prazo{background:var(--petrol-tint); color:var(--petrol);}
   .periodo-atual{font-size:0.84rem; color:var(--ink-soft); border:1px dashed var(--border-strong); border-radius:var(--radius-s); padding:9px 12px;}
