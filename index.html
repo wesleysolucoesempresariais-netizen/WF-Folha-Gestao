@@ -222,6 +222,7 @@
   @media (min-width:1100px){ .nav-links-mobile-hide{display:flex;} }
   nav.links a{white-space:nowrap;}
   @media (max-width:1240px){ nav.links{gap:22px;} }
+  @media (max-width:1240px){ nav.links{gap:16px;} nav.links a{font-size:0.88rem;} }
 
   /* ====== Hero ====== */
   .hero{
@@ -639,6 +640,14 @@
   .quote-cta{display:flex; flex-direction:column; gap:12px; align-items:stretch;}
   .quote-cta .btn{justify-content:center; padding:15px 22px; font-size:var(--fs-base);}
   .quote-cta small{color:var(--ink-faint); font-size:var(--fs-xs); text-align:center; line-height:1.5;}
+
+  /* ====== Cálculo de rescisão avulso ====== */
+  .quote.calc{border-left:1px solid var(--border);}
+  .calc-aud{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:22px;}
+  @media (max-width:600px){ .calc-aud{grid-template-columns:1fr;} }
+  .calc-aud div{background:var(--bg-alt); border-radius:var(--radius-m); padding:16px 18px;}
+  .calc-aud strong{display:block; font-family:var(--font-display); color:var(--petrol); font-size:var(--fs-base);}
+  .calc-aud span{display:block; margin-top:4px; color:var(--ink-soft); font-size:var(--fs-sm); line-height:1.5;}
   /* Margem lateral garantida: regras como .nav e .hero-inner usam "padding" abreviado
      e zeravam a margem do .wrap, deixando o texto colado na borda no celular. */
   .wrap.wrap{padding-left:28px; padding-right:28px;}
@@ -657,6 +666,7 @@
     <nav class="links nav-links-mobile-hide">
       <a href="#servicos">Serviços</a>
       <a href="#para-quem">Para quem</a>
+      <a href="#calculo-rescisao">Rescisão</a>
       <a href="#comparativo">Por que terceirizar</a>
       <a href="#processo">Como funciona</a>
       <a href="#proposta">Proposta</a>
@@ -718,7 +728,7 @@
       <div class="ledger-row">
         <svg class="ledger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16.5 5.5a3.2 3.2 0 0 1 0 6.2"/><path d="M20.5 20c0-2.7-1.7-4.6-3.8-5.3"/></svg>
         <div class="ledger-title">Admissões e rescisões</div>
-        <div class="ledger-desc">Contratação, exames, documentação e cálculo de verbas rescisórias conduzidos sem erro e sem atraso.</div>
+        <div class="ledger-desc">Contratação, exames, documentação e cálculo de verbas rescisórias conduzidos sem erro e sem atraso. Também faço <a href="#calculo-rescisao" style="color:var(--petrol);font-weight:600">cálculo de rescisão avulso</a>.</div>
       </div>
       <div class="ledger-row">
         <svg class="ledger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
@@ -754,6 +764,32 @@
         <svg class="ledger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.4 8.4-8 9.5C7.4 20.4 4 17 4 12V7l8-4z"/></svg>
         <div class="ledger-title">Consultoria trabalhista</div>
         <div class="ledger-desc">Orientação sobre CLT, riscos e boas práticas de gestão de pessoas, sempre que uma dúvida aparecer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="calculo-rescisao">
+  <div class="wrap">
+    <div class="quote calc">
+      <div>
+        <span class="eyebrow">Cálculo de rescisão avulso</span>
+        <h2>Vai sair ou vai desligar alguém? Saiba o valor certo da rescisão.</h2>
+        <p>Serviço pontual, sem contrato mensal. Você preenche os dados pelo site e recebe o cálculo conferido por especialista em DP, com o valor de cada verba e o líquido final.</p>
+        <div class="calc-aud">
+          <div><strong>Para empresas</strong><span>Quanto vai pagar, com encargos, prazos e minuta do TRCT.</span></div>
+          <div><strong>Para trabalhadores</strong><span>Simulação de quanto vai receber, antes de assinar qualquer coisa.</span></div>
+        </div>
+        <ul class="quote-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Verbas, férias vencidas e proporcionais, 13º e aviso prévio</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>FGTS com multa de 40% ou 20% e alerta de depósitos em atraso</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Descontos de INSS e IRRF pelas tabelas de 2026</li>
+        </ul>
+      </div>
+      <div class="quote-cta">
+        <a class="btn btn-gold" href="/calculo-rescisao/">Pedir simulação ou cálculo</a>
+        <a class="btn btn-ghost" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20uma%20simula%C3%A7%C3%A3o%20de%20rescis%C3%A3o." target="_blank" rel="noopener">Tirar dúvida no WhatsApp</a>
+        <small>Formulário de cerca de 5 minutos. Os dados são usados apenas para o cálculo, conforme a LGPD.</small>
       </div>
     </div>
   </div>
@@ -979,6 +1015,10 @@
       <details class="faq-item">
         <summary>O atendimento é direto com quem cuida da minha folha?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
         <p>Sim, sem call center. Dúvidas e ajustes são tratados diretamente por WhatsApp ou e-mail com quem executa o serviço.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Fazem cálculo de rescisão sem contratar o serviço mensal?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>Sim. O cálculo de rescisão é um serviço avulso, para empresas e também para trabalhadores que querem uma simulação de quanto vão receber. É só <a href="/calculo-rescisao/" style="color:var(--petrol);font-weight:600">preencher o formulário de cálculo</a>; depois da análise, o retorno vem pelo WhatsApp.</p>
       </details>
       <details class="faq-item">
         <summary>Como peço uma proposta?<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
