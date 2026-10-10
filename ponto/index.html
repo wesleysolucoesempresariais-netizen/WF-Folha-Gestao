@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WF Ponto &amp; Gestão | Ponto eletrônico pelo celular</title>
+<meta name="description" content="Ponto eletrônico pelo celular (REP-P) dentro da Portaria 671, com banco de horas, comprovantes e fechamento direto na folha. Agende uma demonstração gratuita.">
+<meta name="theme-color" content="#084D6E">
+<link rel="canonical" href="https://folhaegestao.com.br/ponto/">
+<meta property="og:title" content="WF Ponto &amp; Gestão — ponto eletrônico pelo celular">
+<meta property="og:description" content="Dentro da lei, sem relógio para comprar e ligado à sua folha. Agende uma demonstração gratuita.">
+<meta property="og:image" content="https://folhaegestao.com.br/og-image.png">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../icon-512.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --bg:#FBFCFC; --bg-alt:#EEF1F3; --surface:#FFFFFF;
+    --ink:#1A1A1A; --ink-soft:#4C5A61; --ink-faint:#646E73;
+    --petrol:#084D6E; --petrol-tint:#E7EEF2; --steel:#94ADBB;
+    --border:#DCE3E6; --border-strong:#C3CFD3;
+    --danger:#B42318; --danger-bg:#FEF3F2;
+    --shadow:0 1px 2px rgba(8,77,110,0.06), 0 12px 28px -16px rgba(8,77,110,0.18);
+    --radius-s:4px; --radius-m:8px;
+    --font-display:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
+    --font-body:'Helvetica Neue',Helvetica,Arial,-apple-system,BlinkMacSystemFont,sans-serif;
+    --brand:#084D6E;
+    --mark:url("data:image/png;base64,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");
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1417; --bg-alt:#141C20; --surface:#131B1F;
+      --ink:#EDF0F1; --ink-soft:#AEBBC1; --ink-faint:#7E8C92;
+      --petrol:#5FA0C4; --petrol-tint:#16262E;
+      --border:#263136; --border-strong:#3A4A51;
+      --danger:#F97066; --danger-bg:#2A1715;
+      --shadow:0 1px 2px rgba(0,0,0,0.3), 0 16px 32px -18px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1417; --bg-alt:#141C20; --surface:#131B1F;
+    --ink:#EDF0F1; --ink-soft:#AEBBC1; --ink-faint:#7E8C92;
+    --petrol:#5FA0C4; --petrol-tint:#16262E;
+    --border:#263136; --border-strong:#3A4A51;
+    --danger:#F97066; --danger-bg:#2A1715;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:1rem; line-height:1.5;}
+  a{color:var(--petrol);}
+  .wrap{max-width:760px; margin:0 auto; padding:0 16px;}
+
+  header{border-bottom:1px solid var(--border); background:var(--surface);}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px;}
+  .brand-lockup{display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;}
+  .brand-mark{flex:none; width:32px; height:32px; background-color:var(--petrol); -webkit-mask:var(--mark) center/contain no-repeat; mask:var(--mark) center/contain no-repeat;}
+  .brand{display:flex; flex-direction:column; line-height:1.1;}
+  .brand-name{font-family:var(--font-display); font-weight:800; font-size:1.05rem; text-transform:uppercase;}
+  .brand-sub{font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; margin-top:3px;}
+  .nav-link{font-family:var(--font-display); font-weight:600; font-size:0.88rem; text-decoration:none; color:var(--ink-soft);}
+
+  .intro{padding:36px 0 20px;}
+  .eyebrow{font-family:var(--font-display); font-weight:700; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--petrol);}
+  h1{font-family:var(--font-display); font-weight:800; font-size:clamp(1.6rem,4.4vw,2.2rem); line-height:1.15; margin:8px 0 10px; letter-spacing:-0.01em;}
+  .intro p{color:var(--ink-soft); margin:0; max-width:60ch;}
+  .intro-points{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; padding:0; list-style:none; font-size:0.88rem; color:var(--ink-soft);}
+  .intro-points li{display:flex; align-items:center; gap:7px;}
+  .intro-points li::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--petrol);}
+
+  .stepper{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:8px 0 18px; padding:0; list-style:none;}
+  .stepper li{font-family:var(--font-display); font-size:0.78rem; font-weight:600; color:var(--ink-faint); border-top:3px solid var(--border); padding-top:7px;}
+  .stepper li.done{color:var(--ink-soft); border-color:var(--steel);}
+  .stepper li.current{color:var(--petrol); border-color:var(--petrol);}
+  .stepper .n{display:block; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;}
+  @media (max-width:520px){ .stepper .t{display:none;} .stepper li.current .t{display:inline;} }
+
+  .card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-m); box-shadow:var(--shadow); padding:24px;}
+  @media (max-width:520px){ .card{padding:18px 16px;} }
+  fieldset{border:0; margin:0; padding:0; min-width:0;}
+  .step{display:none;}
+  .step.active{display:block;}
+  .step h2{font-family:var(--font-display); font-weight:700; font-size:1.2rem; margin:0 0 4px;}
+  .step .lead{color:var(--ink-soft); font-size:0.92rem; margin:0 0 18px;}
+  .group-title{font-family:var(--font-display); font-weight:700; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin:22px 0 10px; padding-top:16px; border-top:1px solid var(--border);}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px 16px;}
+  .grid-3{grid-template-columns:2fr 1fr 1fr;}
+  .full{grid-column:1/-1;}
+  @media (max-width:600px){ .grid, .grid-3{grid-template-columns:1fr;} }
+
+  .field label, .field .label{display:block; font-family:var(--font-display); font-weight:600; font-size:0.88rem; margin-bottom:5px;}
+  .opt{font-weight:400; color:var(--ink-faint); font-size:0.8rem;}
+  .hint{display:block; font-size:0.8rem; color:var(--ink-faint); margin-top:4px;}
+  input[type=text], input[type=email], input[type=tel], input[type=date], input[type=number], select, textarea{
+    width:100%; font:inherit; font-size:1rem; color:var(--ink); background:var(--surface);
+    border:1px solid var(--border-strong); border-radius:var(--radius-s); padding:10px 12px; min-height:44px;
+  }
+  textarea{min-height:90px; resize:vertical;}
+  input:focus, select:focus, textarea:focus{outline:2px solid var(--petrol); outline-offset:1px; border-color:var(--petrol);}
+  .money{position:relative;}
+  .money span{position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--ink-faint); font-size:0.92rem; pointer-events:none;}
+  .money input{padding-left:38px;}
+  .field.invalid input, .field.invalid select{border-color:var(--danger);}
+  .err{display:none; color:var(--danger); font-size:0.8rem; margin-top:4px;}
+  .field.invalid .err{display:block;}
+
+  .choices{display:grid; gap:8px;}
+  .choice{display:flex; gap:10px; align-items:flex-start; border:1px solid var(--border-strong); border-radius:var(--radius-s); padding:11px 12px; cursor:pointer; background:var(--surface);}
+  .choice:hover{border-color:var(--petrol);}
+  .choice input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
+  .choice strong{display:block; font-family:var(--font-display); font-weight:600; font-size:0.92rem;}
+  .choice small{display:block; color:var(--ink-faint); font-size:0.8rem;}
+  .choice:has(input:checked){border-color:var(--petrol); background:var(--petrol-tint);}
+  .field label.periodo{display:flex; margin-bottom:0; font-family:var(--font-body); font-weight:400;}
+  .field label.choice, .field label.check{display:flex; margin-bottom:0; font-family:var(--font-body); font-weight:400; font-size:0.92rem;}
+  .choices.two{grid-template-columns:1fr 1fr;}
+  @media (max-width:600px){ .choices.two{grid-template-columns:1fr;} }
+  .check{display:flex; gap:10px; align-items:flex-start; font-size:0.92rem; cursor:pointer;}
+  .check input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
+  .aviso-calculo{border:1px solid var(--border-strong); color:var(--ink); line-height:1.55;}
+  .aviso-calculo strong{display:block; font-family:var(--font-display); font-size:0.92rem; margin-bottom:4px;}
+  .ferias-lista{display:grid; gap:8px;}
+  .periodo{display:flex; gap:10px; align-items:flex-start; border:1px solid var(--border-strong); border-radius:var(--radius-s); padding:10px 12px; cursor:pointer; background:var(--surface);}
+  .periodo input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
+  .periodo:has(input:checked){border-color:var(--petrol); background:var(--petrol-tint);}
+  .periodo strong{display:block; font-family:var(--font-display); font-weight:600; font-size:0.92rem;}
+  .periodo small{display:block; color:var(--ink-soft); font-size:0.8rem;}
+  .tag{display:inline-block; font-family:var(--font-display); font-weight:700; font-size:0.75rem; letter-spacing:0.04em; text-transform:uppercase; border-radius:3px; padding:2px 6px; margin-top:4px;}
+  .tag-dobro{background:var(--danger-bg); color:var(--danger);}
+  .tag-prazo{background:var(--petrol-tint); color:var(--petrol);}
+  .periodo-atual{font-size:0.84rem; color:var(--ink-soft); border:1px dashed var(--border-strong); border-radius:var(--radius-s); padding:9px 12px;}
+  .hidden{display:none !important;}
+  .note{background:var(--petrol-tint); border-radius:var(--radius-s); padding:10px 12px; font-size:0.86rem; color:var(--ink-soft);}
+
+  .actions{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:24px; padding-top:18px; border-top:1px solid var(--border);}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:var(--font-display); font-weight:700; font-size:0.95rem; text-decoration:none; padding:12px 22px; border-radius:var(--radius-s); border:1px solid transparent; cursor:pointer; min-height:46px;}
+  .btn-primary{background:var(--brand); color:#fff;}
+  .btn-primary:hover{filter:brightness(1.1);}
+  .btn-primary[disabled]{opacity:0.6; cursor:wait;}
+  .btn-ghost{background:transparent; border-color:var(--border-strong); color:var(--ink);}
+  .actions .spacer{flex:1;}
+  .form-error{display:none; margin-top:14px; background:var(--danger-bg); color:var(--danger); border-radius:var(--radius-s); padding:10px 12px; font-size:0.9rem;}
+
+  .success{text-align:center; padding:12px 4px;}
+  .success .icon{width:56px; height:56px; border-radius:50%; background:var(--petrol-tint); color:var(--petrol); display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;}
+  .success h2{font-family:var(--font-display); font-weight:800; font-size:1.4rem; margin:6px 0;}
+  .success p{color:var(--ink-soft); max-width:46ch; margin:6px auto;}
+  .protocolo{font-family:var(--font-display); font-weight:700; color:var(--ink);}
+
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
+  footer{color:var(--ink-faint); font-size:0.8rem; padding:28px 16px 40px; text-align:center;}
+</style>
+<style>
+  .wrap{max-width:960px;}
+  .hero-ponto{padding:48px 0 28px;}
+  .hero-ponto p{color:var(--ink-soft); margin:0; max-width:62ch; font-size:1.05rem;}
+  .hero-ponto .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;}
+  .bloco{padding:40px 0; border-top:1px solid var(--border);}
+  .bloco h2{font-family:var(--font-display); font-weight:800; font-size:clamp(1.35rem,3.4vw,1.75rem); line-height:1.2; margin:8px 0 10px; letter-spacing:-0.01em;}
+  .bloco > p{color:var(--ink-soft); max-width:64ch; margin:0 0 22px;}
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .tri{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:760px){ .duo, .tri{grid-template-columns:1fr;} }
+  .tipo{border:1px solid var(--border); border-radius:var(--radius-m); padding:22px; background:var(--surface);}
+  .tipo .k{font-family:var(--font-display); font-weight:700; font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint);}
+  .tipo h3{font-family:var(--font-display); font-weight:700; font-size:1.08rem; margin:6px 0 8px;}
+  .tipo p{margin:0; color:var(--ink-soft); font-size:0.95rem; line-height:1.55;}
+  .tipo.destaque{background:var(--brand); border-color:var(--brand); color:#fff;}
+  .tipo.destaque .k{color:#C9DCE6;}
+  .tipo.destaque p{color:#DCE8EE;}
+  .alerta{display:flex; gap:14px; align-items:flex-start; margin-top:18px; border-left:4px solid var(--petrol); background:var(--petrol-tint); padding:14px 16px; border-radius:0 var(--radius-s) var(--radius-s) 0; font-size:0.95rem;}
+  .alerta svg{flex:none; width:22px; height:22px; color:var(--petrol); margin-top:1px;}
+  .garantia{border:1px solid var(--border); border-radius:var(--radius-m); padding:20px; background:var(--surface);}
+  .garantia .n{font-family:var(--font-display); font-weight:800; font-size:1.6rem; color:var(--steel); line-height:1;}
+  .garantia h3{font-family:var(--font-display); font-weight:700; font-size:1rem; margin:10px 0 6px;}
+  .garantia p{margin:0; color:var(--ink-soft); font-size:0.92rem; line-height:1.55;}
+  .recursos{display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; padding:0; margin:0; list-style:none;}
+  @media (max-width:600px){ .recursos{grid-template-columns:1fr;} }
+  .recursos li{display:flex; gap:10px; align-items:flex-start; font-size:0.96rem; line-height:1.5;}
+  .recursos svg{flex:none; width:18px; height:18px; color:var(--petrol); margin-top:3px;}
+  .demo-card{margin-top:4px;}
+  .demo-card .lead{color:var(--ink-soft); font-size:0.92rem; margin:0 0 18px;}
+  .fine{font-size:0.8rem; color:var(--ink-faint); margin-top:10px;}
+  .faq details{border-bottom:1px solid var(--border); padding:14px 0;}
+  .faq summary{font-family:var(--font-display); font-weight:700; cursor:pointer; font-size:0.98rem;}
+  .faq details p{color:var(--ink-soft); margin:8px 0 0; font-size:0.95rem; line-height:1.55;}
+  .btn-ghost:hover{border-color:var(--petrol);}
+  .actions{justify-content:flex-end;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand-lockup" href="../" aria-label="WF Folha &amp; Gestão — início">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand"><span class="brand-name">Wesley França</span><span class="brand-sub">Folha &amp; Gestão</span></span>
+    </a>
+    <a class="nav-link" href="#demonstracao">Agendar demonstração</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero-ponto">
+    <span class="eyebrow">WF Ponto &amp; Gestão</span>
+    <h1>Ponto eletrônico pelo celular, dentro da lei e ligado à sua folha.</h1>
+    <p>Seus funcionários batem o ponto no celular ou no computador da empresa. Você acompanha tudo em tempo real e, no fim do mês, as horas já chegam prontas para a folha. Sem relógio para comprar.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#demonstracao">Agendar demonstração gratuita</a>
+      <a class="btn btn-ghost" href="#homologacao">É homologado? Entenda</a>
+    </div>
+  </section>
+
+  <section class="bloco">
+    <span class="eyebrow">O que o sistema faz</span>
+    <h2>Da batida ao contracheque, num lugar só</h2>
+    <ul class="recursos">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Registro só no Wi-Fi ou no endereço da empresa</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Comprovante de cada batida para o funcionário</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Banco de horas, horas extras e adicional noturno calculados</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Esqueceu de bater? Pedido de ajuste pelo app, com aprovação do RH</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Espelho de ponto e arquivos AFD e AEJ para a fiscalização</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Fechamento do mês enviado direto para a folha</li>
+    </ul>
+  </section>
+
+  <section class="bloco" id="homologacao">
+    <span class="eyebrow">Homologação, sem complicação</span>
+    <h2>Ponto por aplicativo não é homologado. E é assim que a lei manda.</h2>
+    <p>A Portaria MTP 671/2021 separa o relógio de ponto do programa de ponto. Cada um tem a sua forma de comprovar que está dentro da lei.</p>
+    <div class="duo">
+      <div class="tipo">
+        <span class="k">É um aparelho</span>
+        <h3>Relógio de ponto tradicional (REP-C)</h3>
+        <p>Cada modelo de relógio passa por homologação no Ministério do Trabalho e certificação de conformidade.</p>
+      </div>
+      <div class="tipo destaque">
+        <span class="k">É um programa · WF Ponto</span>
+        <h3>Ponto por programa (REP-P)</h3>
+        <p>A Portaria 671 não prevê homologação para programas. O que ela exige é o registro do programa no INPI e o Atestado Técnico do desenvolvedor.</p>
+      </div>
+    </div>
+    <div class="alerta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+      <span>Se alguém oferecer “aplicativo homologado pelo MTE”, desconfie: <strong>essa homologação não existe para ponto por programa.</strong></span>
+    </div>
+  </section>
+
+  <section class="bloco">
+    <span class="eyebrow">O que deixa sua empresa segura</span>
+    <h2>Três garantias que valem na fiscalização e na Justiça do Trabalho</h2>
+    <div class="tri">
+      <div class="garantia"><span class="n">01</span><h3>Registro no INPI</h3><p>Programa protocolado no INPI em nome da WF: processo BR 51 2026 009067-9.</p></div>
+      <div class="garantia"><span class="n">02</span><h3>Atestado Técnico</h3><p>Documento assinado digitalmente pela WF, confirmando que o sistema cumpre a Portaria 671. Entregue à sua empresa na implantação.</p></div>
+      <div class="garantia"><span class="n">03</span><h3>Arquivos oficiais</h3><p>Comprovante de cada batida, AFD e AEJ prontos para o auditor fiscal.</p></div>
+    </div>
+    <div class="alerta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <span>Celular, computador da recepção ou terminal na parede: todos registram no mesmo sistema. <strong>A segurança jurídica está no programa, não no aparelho.</strong></span>
+    </div>
+  </section>
+
+  <section class="bloco" id="demonstracao">
+    <span class="eyebrow">Demonstração gratuita · 30 minutos</span>
+    <h2>Veja o sistema funcionando com a rotina da sua empresa</h2>
+    <p>Na demonstração você bate um ponto no seu próprio celular, vê o painel do RH e o fechamento do mês. Preencha abaixo e a conversa já começa no WhatsApp com tudo o que preciso saber.</p>
+
+    <form class="card demo-card" id="form" novalidate>
+      <div class="grid">
+        <div class="field"><label for="nome">Seu nome</label>
+          <input type="text" id="nome" name="nome" required autocomplete="name">
+          <span class="err">Informe seu nome.</span></div>
+        <div class="field"><label for="empresa">Empresa</label>
+          <input type="text" id="empresa" name="empresa" required autocomplete="organization">
+          <span class="err">Informe o nome da empresa.</span></div>
+        <div class="field"><label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="(81) 90000-0000">
+          <span class="err">Informe um WhatsApp com DDD.</span></div>
+        <div class="field"><label for="cidade">Cidade <span class="opt">(opcional)</span></label>
+          <input type="text" id="cidade" name="cidade" autocomplete="address-level2"></div>
+
+        <div class="field full"><span class="label">Quantos funcionários batem ponto?</span>
+          <div class="choices two" role="radiogroup">
+            <label class="choice"><input type="radio" name="funcionarios" value="1 a 5" required><span><strong>1 a 5</strong></span></label>
+            <label class="choice"><input type="radio" name="funcionarios" value="6 a 20"><span><strong>6 a 20</strong></span></label>
+            <label class="choice"><input type="radio" name="funcionarios" value="21 a 50"><span><strong>21 a 50</strong></span></label>
+            <label class="choice"><input type="radio" name="funcionarios" value="mais de 50"><span><strong>Mais de 50</strong></span></label>
+          </div>
+          <span class="err">Escolha uma faixa.</span></div>
+
+        <div class="field full"><span class="label">Como vocês controlam o ponto hoje?</span>
+          <div class="choices two" role="radiogroup">
+            <label class="choice"><input type="radio" name="controle" value="Folha de papel ou planilha" required><span><strong>Papel ou planilha</strong></span></label>
+            <label class="choice"><input type="radio" name="controle" value="Relógio de ponto na parede"><span><strong>Relógio na parede</strong></span></label>
+            <label class="choice"><input type="radio" name="controle" value="Outro aplicativo"><span><strong>Outro aplicativo</strong></span></label>
+            <label class="choice"><input type="radio" name="controle" value="Ainda não controlamos"><span><strong>Ainda não controlamos</strong></span></label>
+          </div>
+          <span class="err">Escolha uma opção.</span></div>
+
+        <div class="field"><label for="periodo">Melhor período</label>
+          <select id="periodo" name="periodo" required>
+            <option value="">Escolha</option>
+            <option>Manhã</option><option>Tarde</option><option>Fim da tarde (após 17h)</option>
+          </select>
+          <span class="err">Escolha um período.</span></div>
+        <div class="field"><label for="formato">Formato</label>
+          <select id="formato" name="formato" required>
+            <option value="">Escolha</option>
+            <option>Videochamada</option><option>Presencial (Recife e região)</option>
+          </select>
+          <span class="err">Escolha o formato.</span></div>
+
+        <div class="field full"><label for="obs">Algo que eu deva saber? <span class="opt">(opcional)</span></label>
+          <textarea id="obs" name="obs" placeholder="Escalas 12x36, mais de uma unidade, funcionários externos…"></textarea></div>
+
+        <div class="field full"><label class="check"><input type="checkbox" id="lgpd" name="lgpd" required> <span>Autorizo o uso destes dados apenas para agendar e realizar a demonstração, conforme a LGPD (Lei 13.709/2018).</span></label>
+          <span class="err">É preciso autorizar para continuar.</span></div>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Agendar pelo WhatsApp</button>
+      </div>
+      <p class="fine">Ao enviar, o WhatsApp abre com a mensagem pronta. É só tocar em enviar.</p>
+    </form>
+  </section>
+
+  <section class="bloco faq">
+    <span class="eyebrow">Dúvidas comuns</span>
+    <h2>Antes de agendar</h2>
+    <details><summary>Preciso comprar relógio de ponto?</summary><p>Não. O funcionário bate o ponto no próprio celular ou no computador da empresa. Se quiser um terminal na parede, ele registra no mesmo sistema.</p></details>
+    <details><summary>E se o funcionário tentar bater o ponto de casa?</summary><p>O registro só é aceito na rede Wi-Fi ou no endereço da empresa que você cadastrar.</p></details>
+    <details><summary>E se cair a internet?</summary><p>O app guarda a marcação e envia assim que a conexão volta, com o horário em que ela foi feita.</p></details>
+    <details><summary>Já terceirizo o DP com a WF. Muda algo?</summary><p>Fica mais simples: o fechamento do ponto vai direto para a folha, sem papel nem planilha.</p></details>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> WF Folha &amp; Gestão · Seus dados são usados apenas para retorno do contato, em conformidade com a LGPD.</footer>
+
+<script>
+(function(){
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var form = document.getElementById('form');
+  var tel = document.getElementById('whatsapp');
+  tel.addEventListener('input', function(){
+    var d = tel.value.replace(/\D/g,'').slice(0,11), o = d;
+    if (d.length > 2) o = '(' + d.slice(0,2) + ') ' + d.slice(2);
+    if (d.length > 7) o = '(' + d.slice(0,2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
+    tel.value = o;
+  });
+  form.addEventListener('input', function(e){ var f = e.target.closest('.field'); if (f) f.classList.remove('invalid'); });
+  function val(n){ var el = form.elements[n]; if (!el) return ''; if (el instanceof RadioNodeList) return el.value; return (el.type === 'checkbox') ? el.checked : el.value.trim(); }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true, primeiro = null;
+    function erro(n){ var el = form.elements[n]; var node = el instanceof RadioNodeList ? el[0] : el; node.closest('.field').classList.add('invalid'); ok = false; primeiro = primeiro || node; }
+    if (!val('nome')) erro('nome');
+    if (!val('empresa')) erro('empresa');
+    if (val('whatsapp').replace(/\D/g,'').length < 10) erro('whatsapp');
+    if (!val('funcionarios')) erro('funcionarios');
+    if (!val('controle')) erro('controle');
+    if (!val('periodo')) erro('periodo');
+    if (!val('formato')) erro('formato');
+    if (!val('lgpd')) erro('lgpd');
+    if (!ok) { primeiro.focus(); return; }
+    var linhas = [
+      'Olá! Vim pelo site e quero agendar a demonstração do WF Ponto & Gestão.',
+      '',
+      '*Nome:* ' + val('nome'),
+      '*Empresa:* ' + val('empresa'),
+      '*WhatsApp:* ' + val('whatsapp')
+    ];
+    if (val('cidade')) linhas.push('*Cidade:* ' + val('cidade'));
+    linhas.push('*Funcionários que batem ponto:* ' + val('funcionarios'));
+    linhas.push('*Controle hoje:* ' + val('controle'));
+    linhas.push('*Melhor período:* ' + val('periodo'));
+    linhas.push('*Formato:* ' + val('formato'));
+    if (val('obs')) linhas.push('*Observações:* ' + val('obs'));
+    window.open('https://wa.me/5581999955522?text=' + encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>
