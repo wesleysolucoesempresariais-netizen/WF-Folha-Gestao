@@ -1,6 +1,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>WF Folha &amp; Gestão</title>
+<title>WF Folha &amp; Gestão | Departamento Pessoal terceirizado e ponto pelo celular</title>
+<link rel="canonical" href="https://folhaegestao.com.br/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "WF Folha & Gestão", "alternateName": "Wesley França Soluções Empresariais", "url": "https://folhaegestao.com.br/", "logo": "https://folhaegestao.com.br/icon-512.png", "image": "https://folhaegestao.com.br/og-image.png", "telephone": "+55-81-99995-5522", "email": "wesley@folhaegestao.com.br", "address": {"@type": "PostalAddress", "streetAddress": "Av. República do Líbano, 251, Sala 2205, Torre A", "addressLocality": "Recife", "addressRegion": "PE", "postalCode": "51110-160", "addressCountry": "BR"}, "areaServed": "BR", "sameAs": ["https://instagram.com/folhaegestao"], "description": "Terceirização de Departamento Pessoal e ponto eletrônico pelo celular: folha de pagamento, admissões, rescisões, férias e eSocial."}</script>
 <meta name="description" content="WF Folha &amp; Gestão — terceirização de Departamento Pessoal: folha de pagamento, admissões, rescisões, férias e eSocial para condomínios, construtoras, escritórios contábeis, clínicas, comércio, MEI e empregador doméstico em Recife, litoral sul de PE e Maragogi-AL.">
 <meta name="theme-color" content="#084D6E">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -345,7 +347,7 @@
 
   /* ====== Para o seu negócio (segmentos) ====== */
   .segmentos{background:var(--brand-deep); color:#F3F7F9; position:relative; overflow:hidden;}
-  .segmentos .eyebrow{color:var(--brand-gold);}
+  .segmentos .eyebrow{color:#C9D7E0;} /* contraste AA sobre o petróleo (o aço dava 3,9:1) */
   .segmentos .section-head h2{color:#FFFFFF;}
   .segmentos .section-head p{color:rgba(255,255,255,0.82);}
   .seg-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;}
@@ -374,7 +376,7 @@
     margin-top:auto; align-self:flex-start;
     font-family:var(--font-display); font-weight:700; font-size:var(--fs-sm);
     color:#FFFFFF; text-decoration:none;
-    border-bottom:1px solid rgba(255,255,255,0.4); padding-bottom:2px;
+    border-bottom:1px solid rgba(255,255,255,0.4); padding:12px 0 2px; /* área de toque de 40px no celular */
   }
   .seg-link:hover{border-bottom-color:#FFFFFF;}
 
@@ -657,6 +659,34 @@
      e zeravam a margem do .wrap, deixando o texto colado na borda no celular. */
   .wrap.wrap{padding-left:28px; padding-right:28px;}
   @media (max-width:600px){ .wrap.wrap{padding-left:20px; padding-right:20px;} }
+
+  /* ====== Destaque: registro de ponto ====== */
+  .ponto-faixa{background:var(--surface, #fff); border-bottom:1px solid var(--border);}
+  .ponto-faixa .wrap{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:48px; align-items:center; padding-top:56px; padding-bottom:56px;}
+  @media (max-width:900px){ .ponto-faixa .wrap{grid-template-columns:1fr; gap:32px; padding-top:40px; padding-bottom:40px;} }
+  .ponto-selo{display:inline-flex; align-items:center; gap:8px; font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--petrol);}
+  .ponto-selo b{background:var(--brand-gold); color:#1A1A1A; padding:3px 9px; border-radius:999px; letter-spacing:0.08em;}
+  .ponto-faixa h2{margin:12px 0 0; font-size:clamp(1.7rem, 3.2vw, 2.5rem); font-weight:800; line-height:1.1; color:var(--ink);}
+  .ponto-faixa h2 em{font-style:normal; color:var(--petrol);}
+  .ponto-faixa .ponto-lead{margin:14px 0 0; font-size:var(--fs-md); color:var(--ink-soft); max-width:52ch;}
+  .ponto-beneficios{list-style:none; margin:22px 0 0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px 20px;}
+  @media (max-width:600px){ .ponto-beneficios{grid-template-columns:1fr;} }
+  .ponto-beneficios li{display:grid; grid-template-columns:22px 1fr; gap:10px; font-size:var(--fs-sm); color:var(--ink);}
+  .ponto-beneficios svg{width:22px; height:22px; color:var(--petrol);}
+  .ponto-preco{margin-top:24px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+  .ponto-preco span{font-size:var(--fs-sm); color:var(--ink-soft);}
+  .ponto-preco strong{font-size:2rem; font-weight:800; color:var(--petrol); font-variant-numeric:tabular-nums;}
+  .ponto-ctas{margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;}
+  /* celular ilustrativo */
+  .ponto-celular{justify-self:center; width:min(300px, 100%); border-radius:36px; padding:14px; background:var(--brand-deep); box-shadow:0 30px 60px -30px rgba(8,77,110,0.55);}
+  .ponto-tela{border-radius:26px; background:#F3F7F9; color:#14242E; padding:22px 18px; display:grid; gap:14px;}
+  .ponto-tela .t-topo{display:flex; justify-content:space-between; font-size:0.78rem; color:#536572;}
+  .ponto-tela .t-hora{font-size:2.6rem; font-weight:800; text-align:center; color:#084D6E; font-variant-numeric:tabular-nums; line-height:1;}
+  .ponto-tela .t-data{text-align:center; font-size:0.85rem; color:#536572; margin-top:-8px;}
+  .ponto-tela .t-botao{background:#084D6E; color:#fff; text-align:center; font-weight:700; padding:14px; border-radius:14px;}
+  .ponto-tela .t-ok{display:grid; gap:4px; background:#E3F2EC; color:#0B5A42; border-radius:12px; padding:10px 12px; font-size:0.8rem;}
+  .ponto-tela .t-ok b{font-size:0.88rem;}
+  .ponto-tela .t-linha{display:flex; justify-content:space-between; font-size:0.8rem; color:#3E5260; border-top:1px solid #DCE4E9; padding-top:10px;}
 </style>
 
 <header>
@@ -669,6 +699,7 @@
       </span>
     </a>
     <nav class="links nav-links-mobile-hide">
+      <a href="/ponto/" style="font-weight:700">Registro de ponto</a>
       <a href="#servicos">Serviços</a>
       <a href="#para-quem">Para quem</a>
       <a href="#calculo-rescisao">Rescisão</a>
@@ -711,6 +742,42 @@
           <span class="hero-chip-mark" aria-hidden="true"></span>
           Atendimento 100% online, para todo o Brasil
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="ponto-faixa" id="registro-de-ponto" aria-labelledby="ponto-titulo">
+  <div class="wrap">
+    <div>
+      <span class="ponto-selo"><b>Novo</b> WF Ponto &amp; Gestão</span>
+      <h2 id="ponto-titulo">Registro de ponto pelo celular, <em>dentro da lei</em> e ligado à sua folha.</h2>
+      <p class="ponto-lead">Sua equipe bate o ponto no próprio celular e você acompanha tudo em tempo real. No fim do mês, as horas chegam prontas para a folha. Sem relógio para comprar, sem papel e sem planilha.</p>
+      <ul class="ponto-beneficios">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>Batida só no Wi-Fi ou no endereço da empresa, com selfie opcional</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>Banco de horas, extras e adicional noturno calculados sozinhos</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>Escala com alertas da CLT e da sua convenção coletiva</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>Comprovante de cada batida e arquivos AFD e AEJ para a fiscalização</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>Funciona sem internet e envia quando o sinal volta</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>Registrado no INPI, conforme a Portaria 671</li>
+      </ul>
+      <div class="ponto-preco"><span>A partir de</span><strong>R$ 4,99</strong><span>por funcionário/mês</span></div>
+      <div class="ponto-ctas">
+        <a class="btn btn-gold" href="/ponto/#planos">Ver planos e preços</a>
+        <a class="btn btn-ghost" href="/ponto/#demonstracao">Agendar demonstração grátis</a>
+        <a class="btn btn-ghost" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20uma%20proposta%20do%20WF%20Ponto%20%26%20Gest%C3%A3o%20%28registro%20de%20ponto%29." target="_blank" rel="noopener">Solicitar proposta</a>
+      </div>
+    </div>
+    <div class="ponto-celular" role="img" aria-label="Tela do app de ponto mostrando a entrada registrada às 08:01 no Wi-Fi da empresa">
+      <div class="ponto-tela">
+        <div class="t-topo"><span>Olá, Maria</span><span>Padaria Boa Viagem</span></div>
+        <div class="t-hora">08:01</div>
+        <div class="t-data">segunda-feira, 12 de outubro</div>
+        <div class="t-botao">Registrar entrada</div>
+        <div class="t-ok"><b>✓ Entrada registrada</b>No Wi-Fi da empresa · comprovante enviado</div>
+        <div class="t-linha"><span>Banco de horas</span><b>+02:15</b></div>
+        <div class="t-linha"><span>Próxima batida</span><b>12:00</b></div>
       </div>
     </div>
   </div>
@@ -815,8 +882,8 @@
       </div>
       <div class="quote-cta">
         <a class="btn btn-gold" href="/ponto/#demonstracao">Agendar demonstração gratuita</a>
-        <a class="btn btn-ghost" href="/ponto/#homologacao">É homologado? Entenda</a>
-        <small>Demonstração de 30 minutos, por videochamada ou presencial em Recife.</small>
+        <a class="btn btn-ghost" href="/ponto/#planos">Ver planos e preços</a>
+        <small>A partir de R$ 4,99 por funcionário/mês. Demonstração de 30 minutos, por videochamada ou presencial em Recife.</small>
       </div>
     </div>
   </div>
@@ -1072,7 +1139,7 @@
   <div class="wrap">
     <div class="contact-panel">
       <div>
-        <span class="eyebrow" style="color:var(--brand-gold)">Vamos conversar</span>
+        <span class="eyebrow" style="color:#C9D7E0">Vamos conversar</span>
         <h2>Pronto para tirar o DP da sua lista de preocupações?</h2>
         <p>Me chame no WhatsApp e conte como sua folha funciona hoje — a partir daí, monto uma proposta sob medida para o seu negócio.</p>
       </div>

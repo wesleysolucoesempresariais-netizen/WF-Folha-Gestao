@@ -152,6 +152,33 @@
 
   .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
   footer{color:var(--ink-faint); font-size:0.8rem; padding:28px 16px 40px; text-align:center;}
+
+  /* ---- planos e preços ---- */
+  .planos{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px;}
+  @media (max-width:760px){ .planos{grid-template-columns:1fr;} }
+  .plano{border:1px solid var(--border); border-radius:var(--radius-m); background:var(--surface); padding:18px; display:flex; flex-direction:column; gap:10px;}
+  .plano.destaque{border:2px solid var(--petrol); box-shadow:var(--shadow);}
+  .plano .selo{align-self:flex-start; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff; background:var(--brand); padding:3px 8px; border-radius:999px;}
+  .plano h3{margin:0; font-family:var(--font-display); font-size:1.02rem; line-height:1.25;}
+  .plano .pq{margin:0; font-size:0.88rem; color:var(--ink-soft);}
+  .plano .preco{font-family:var(--font-display); font-weight:800; font-size:1.7rem; color:var(--petrol); line-height:1; font-variant-numeric:tabular-nums;}
+  .plano .preco small{font-family:var(--font-body); font-weight:400; font-size:0.8rem; color:var(--ink-faint);}
+  .plano .min{font-size:0.8rem; color:var(--ink-faint); margin-top:-4px;}
+  .plano ul{list-style:none; margin:0; padding:0; display:grid; gap:6px; font-size:0.88rem;}
+  .plano li{display:grid; grid-template-columns:16px 1fr; gap:6px;}
+  .plano li::before{content:"✓"; color:var(--petrol); font-weight:700;}
+  .plano li.mais{grid-template-columns:1fr; font-weight:600;}
+  .plano li.mais::before{content:none;}
+  .desconto{margin-top:14px; padding:12px 16px; border-radius:var(--radius-m); background:var(--petrol-tint); font-size:0.92rem;}
+  .desconto b{font-family:var(--font-display);}
+  .simula{margin-top:14px; display:grid; grid-template-columns:auto 1fr; gap:10px 16px; align-items:center;}
+  .simula label{font-size:0.88rem; color:var(--ink-soft);}
+  .simula input, .simula select{font:inherit; padding:8px 10px; border:1px solid var(--border-strong); border-radius:var(--radius-s); background:var(--surface); color:var(--ink); min-width:0;}
+  .simula input{width:110px;} .simula select{justify-self:start;}
+  .simula .total{grid-column:1/-1; font-size:0.95rem;}
+  .simula .total b{font-family:var(--font-display); font-size:1.3rem; color:var(--petrol); font-variant-numeric:tabular-nums;}
+  @media (max-width:520px){ .simula{grid-template-columns:1fr;} }
+  .letra-miuda{margin:12px 0 0; font-size:0.82rem; color:var(--ink-faint);}
 </style>
 <style>
   .wrap{max-width:960px;}
@@ -174,7 +201,7 @@
   .alerta{display:flex; gap:14px; align-items:flex-start; margin-top:18px; border-left:4px solid var(--petrol); background:var(--petrol-tint); padding:14px 16px; border-radius:0 var(--radius-s) var(--radius-s) 0; font-size:0.95rem;}
   .alerta svg{flex:none; width:22px; height:22px; color:var(--petrol); margin-top:1px;}
   .garantia{border:1px solid var(--border); border-radius:var(--radius-m); padding:20px; background:var(--surface);}
-  .garantia .n{font-family:var(--font-display); font-weight:800; font-size:1.6rem; color:var(--steel); line-height:1;}
+  .garantia .n{font-family:var(--font-display); font-weight:800; font-size:1.6rem; color:var(--petrol); line-height:1;} /* o aço dava 2,35:1 no modo claro */
   .garantia h3{font-family:var(--font-display); font-weight:700; font-size:1rem; margin:10px 0 6px;}
   .garantia p{margin:0; color:var(--ink-soft); font-size:0.92rem; line-height:1.55;}
   .recursos{display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; padding:0; margin:0; list-style:none;}
@@ -198,7 +225,7 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand"><span class="brand-name">Wesley França</span><span class="brand-sub">Folha &amp; Gestão</span></span>
     </a>
-    <a class="nav-link" href="#demonstracao">Agendar demonstração</a>
+    <span style="display:flex;gap:18px"><a class="nav-link" href="#planos">Planos</a><a class="nav-link" href="#demonstracao">Agendar demonstração</a></span>
   </div>
 </header>
 
@@ -260,6 +287,64 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
       <span>Celular, computador da recepção ou terminal na parede: todos registram no mesmo sistema. <strong>A segurança jurídica está no programa, não no aparelho.</strong></span>
     </div>
+  </section>
+
+
+  <section class="bloco" id="planos">
+    <span class="eyebrow">Planos e preços</span>
+    <h2>Você paga pelos funcionários ativos no mês</h2>
+    <p>Sem taxa por aparelho e sem relógio para comprar. Escolha o quanto a WF cuida por você.</p>
+    <div class="planos">
+      <div class="plano">
+        <h3>Ponto &amp; Gestão Essencial</h3>
+        <p class="pq">Ponto simples e dentro da Portaria 671.</p>
+        <div class="preco">R$ 4,99 <small>por funcionário/mês</small></div>
+        <div class="min">mínimo de R$ 99 por mês</div>
+        <ul>
+          <li>Ponto pelo celular, no Wi-Fi ou no local da empresa</li>
+          <li>Banco de horas, extras e noturno calculados</li>
+          <li>Escala do mês com alertas da CLT</li>
+          <li>AFD, AEJ e fechamento para a folha</li>
+        </ul>
+      </div>
+      <div class="plano destaque">
+        <span class="selo">Mais indicado</span>
+        <h3>Ponto &amp; Gestão Compliance</h3>
+        <p class="pq">Para evitar processo e multa antes que aconteçam.</p>
+        <div class="preco">R$ 6,99 <small>por funcionário/mês</small></div>
+        <div class="min">mínimo de R$ 139,99 por mês</div>
+        <ul>
+          <li class="mais">Tudo do Essencial, e mais:</li>
+          <li>Sua convenção coletiva aplicada na escala e no cálculo</li>
+          <li>Alertas de jornada, intervalo e domingo de folga</li>
+          <li>Auditoria preventiva semanal pela WF</li>
+          <li>Admissão digital, mural e documentos assinados no app</li>
+          <li>Canal de denúncia sigiloso</li>
+        </ul>
+      </div>
+      <div class="plano">
+        <h3>Ponto &amp; Gestão 360</h3>
+        <p class="pq">Departamento pessoal e RH inteiros com a WF.</p>
+        <div class="preco"><small>a partir de</small> R$ 59 <small>por funcionário/mês</small></div>
+        <div class="min">valor final conforme a folha da empresa</div>
+        <ul>
+          <li class="mais">Tudo do Compliance, e a WF faz:</li>
+          <li>Fechamento do ponto e folha de pagamento</li>
+          <li>Encargos, eSocial, férias, 13º e rescisões</li>
+          <li>Holerites e férias no app do funcionário</li>
+        </ul>
+      </div>
+    </div>
+    <div class="desconto"><b>Empresa maior paga menos:</b> a partir do 51º funcionário, cada um sai com 15% de desconto.</div>
+    <form class="card simula" id="simula" onsubmit="return false">
+      <label for="sim-qtd">Funcionários</label><input id="sim-qtd" type="number" min="1" max="999" value="25" inputmode="numeric">
+      <label for="sim-plano">Plano</label>
+      <select id="sim-plano"><option value="4.99|99">Essencial</option><option value="6.99|139.99" selected>Compliance</option><option value="59|590">360 (a partir de)</option></select>
+      <p class="total" id="sim-total" aria-live="polite"></p>
+      <a class="btn btn-primary" id="sim-proposta" href="#" target="_blank" rel="noopener" style="grid-column:1/-1;justify-self:start">Solicitar proposta com esta simulação</a>
+    </form>
+    <div class="cta-row" style="margin-top:16px"><a class="btn btn-primary" href="#demonstracao">Agendar demonstração gratuita</a></div>
+    <p class="letra-miuda">Valores mensais por funcionário ativo no mês, sujeitos a proposta comercial. Implantação sob consulta e isenta no contrato de 12 meses. Avisos no WhatsApp e totem são opcionais.</p>
   </section>
 
   <section class="bloco" id="demonstracao">
@@ -379,6 +464,24 @@
     window.open('https://wa.me/5581999955522?text=' + encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
   });
 })();
+</script>
+
+<script>
+  (function(){
+    var q=document.getElementById('sim-qtd'), p=document.getElementById('sim-plano'), t=document.getElementById('sim-total');
+    var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:v%1?2:0,maximumFractionDigits:2});};
+    function calc(){
+      var n=Math.max(1,Math.min(999,Math.round(Number(q.value)||1))), v=p.value.split('|'), preco=Number(v[0]), min=Number(v[1]);
+      var soma=Math.min(n,50)*preco+Math.max(0,n-50)*Math.round(preco*0.85*100)/100;
+      soma=Math.round(soma*100)/100; var total=Math.max(soma,min);
+      t.innerHTML='Valor estimado: <b>'+brl(total)+'</b> por mês'+(soma<min?' (mínimo do plano)':' · média de '+brl(Math.round(total/n*100)/100)+' por funcionário');
+      // proposta pelo WhatsApp já com a simulação
+      var plano=p.options[p.selectedIndex].text.replace(' (a partir de)','');
+      var msg='Olá! Vim pelo site e quero uma proposta do WF Ponto & Gestão. Plano: '+plano+'. Funcionários: '+n+'. Valor simulado: '+brl(total)+' por mês.';
+      document.getElementById('sim-proposta').href='https://wa.me/5581999955522?text='+encodeURIComponent(msg);
+    }
+    q.addEventListener('input',calc); p.addEventListener('change',calc); calc();
+  })();
 </script>
 </body>
 </html>
