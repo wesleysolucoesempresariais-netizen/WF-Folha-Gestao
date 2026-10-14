@@ -21,7 +21,10 @@
     --bg:#FBFCFC; --bg-alt:#EEF1F3; --surface:#FFFFFF;
     --ink:#1A1A1A; --ink-soft:#4C5A61; --ink-faint:#646E73;
     --petrol:#084D6E; --petrol-tint:#E7EEF2; --steel:#94ADBB;
-    --border:#DCE3E6; --border-strong:#C3CFD3;
+    --border:#DCE3E6;
+    /* auditoria T-2: #C3CFD3 dava 1,59:1 sobre branco; a WCAG 1.4.11
+       pede 3:1 para contorno de componente. #6E8795 dá 3,78:1. */
+    --border-strong:#6E8795;
     --danger:#B42318; --danger-bg:#FEF3F2;
     --shadow:0 1px 2px rgba(8,77,110,0.06), 0 12px 28px -16px rgba(8,77,110,0.18);
     --radius-s:4px; --radius-m:8px;
@@ -223,7 +226,7 @@
   <div class="wrap nav">
     <a class="brand-lockup" href="../" aria-label="WF Folha &amp; Gestão — início">
       <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand"><span class="brand-name">Wesley França</span><span class="brand-sub">Folha &amp; Gestão</span></span>
+      <span class="brand"><span class="brand-name">WF Folha &amp; Gestão</span><span class="brand-sub">Departamento Pessoal</span></span>
     </a>
     <span style="display:flex;gap:18px"><a class="nav-link" href="#planos">Planos</a><a class="nav-link" href="#demonstracao">Agendar demonstração</a></span>
   </div>
@@ -420,7 +423,7 @@
   </section>
 </main>
 
-<footer>© <span id="year"></span> WF Folha &amp; Gestão · Seus dados são usados apenas para retorno do contato, em conformidade com a LGPD.</footer>
+<footer>© <span id="year"></span> WF Folha &amp; Gestão · Seus dados são usados apenas para retorno do contato, em conformidade com a LGPD. · <a href="/privacidade/">Política de Privacidade</a></footer>
 
 <script>
 (function(){
