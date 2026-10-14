@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>WF Folha &amp; Gestão | Departamento Pessoal terceirizado e ponto pelo celular</title>
@@ -221,7 +224,11 @@
   .nav-cta{display:none;}
   @media (min-width:860px){ .nav-cta{display:inline-flex;} }
   .nav-links-mobile-hide{display:none;}
-  @media (min-width:1200px){ .nav-links-mobile-hide{display:flex;} }
+  /* Auditoria: o cabeçalho precisa de 1433px (logo 206 + 9 links 996 + botão 174 + espaços)
+     e o container dá 1180px. Por isso a navegação inteira estourava em TODA largura de
+     desktop até ~1700px. A lista completa só aparece quando realmente cabe; abaixo disso
+     ela vai para o menu, sem perder nenhum link. */
+  @media (min-width:1700px){ .nav-links-mobile-hide{display:flex;} }
   nav.links a{white-space:nowrap;}
   /* Cabeçalho: logo e botão nunca encolhem; o menu ajusta o espaçamento à largura da tela */
   .nav{gap:28px;}
@@ -258,6 +265,10 @@
     position:relative;
     padding:76px 0 84px;
     max-width:640px;
+  }
+  /* auditoria, item a: no celular o topo tinha ~170px vazios antes do h1 */
+  @media (max-width:760px){
+    .hero-inner{padding:24px 0 48px;}
   }
   .hero h1{
     color:#FFFFFF;
@@ -617,13 +628,24 @@
     right:16px;
     bottom:calc(16px + env(safe-area-inset-bottom, 0px));
     z-index:50;
-    box-shadow:0 8px 24px -6px rgba(8,77,110,0.4);
+    align-items:center; justify-content:center; gap:8px;
+    background:#0B6A4F; color:#fff; border:0;
+    box-shadow:0 8px 24px rgba(11,106,79,0.35);
+    transition:width 180ms ease-out, padding 180ms ease-out, border-radius 180ms ease-out;
   }
+  .mobile-cta svg{width:26px; height:26px; flex:none;}
+  /* auditoria, item a: vira ícone redondo a partir do primeiro rolar */
+  .mobile-cta.recolhido{width:56px; height:56px; padding:0; border-radius:50%;}
+  .mobile-cta.recolhido .mobile-cta-texto{display:none;}
   @media (max-width:760px){
     .mobile-cta{display:inline-flex;}
   }
+  /* item b: o terceiro caminho vira link, não botão */
+  .hero-link{display:inline-flex; align-items:center; min-height:44px; color:#DCE6EC;
+    font-weight:700; text-decoration:underline; text-underline-offset:3px;}
+  .hero-link:hover{color:#fff;}
 
-  @media (max-width:1199px){ .nav-links-mobile-hide{display:none !important;} }
+  @media (max-width:1699px){ .nav-links-mobile-hide{display:none !important;} }
 
   /* ====== Questionário de proposta ====== */
   .quote{
@@ -676,6 +698,8 @@
   .ponto-preco{margin-top:24px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
   .ponto-preco span{font-size:var(--fs-sm); color:var(--ink-soft);}
   .ponto-preco strong{font-size:2rem; font-weight:800; color:var(--petrol); font-variant-numeric:tabular-nums;}
+  .ponto-minimo{margin-top:8px; font-size:var(--fs-sm); font-weight:700; color:var(--ink);
+    background:rgba(255,255,255,0.14); display:inline-block; padding:6px 12px; border-radius:999px;}
   .ponto-ctas{margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;}
   /* celular ilustrativo */
   .ponto-celular{justify-self:center; width:min(300px, 100%); border-radius:36px; padding:14px; background:var(--brand-deep); box-shadow:0 30px 60px -30px rgba(8,77,110,0.55);}
@@ -687,18 +711,47 @@
   .ponto-tela .t-ok{display:grid; gap:4px; background:#E3F2EC; color:#0B5A42; border-radius:12px; padding:10px 12px; font-size:0.8rem;}
   .ponto-tela .t-ok b{font-size:0.88rem;}
   .ponto-tela .t-linha{display:flex; justify-content:space-between; font-size:0.8rem; color:#3E5260; border-top:1px solid #DCE4E9; padding-top:10px;}
+  /* ---- Acessibilidade: link de pulo e foco visível (auditoria A-2, A-6) ---- */
+  .pular-conteudo{position:absolute; left:16px; top:-100px; z-index:200;
+    background:var(--petrol); color:#fff; font-weight:700; padding:12px 20px;
+    border-radius:var(--radius-m); text-decoration:none; transition:top 180ms ease-out;}
+  .pular-conteudo:focus{top:16px;}
+  :focus-visible{outline:3px solid var(--petrol); outline-offset:2px; border-radius:var(--radius-m);}
+  .hero :focus-visible, .ponto-faixa :focus-visible, footer :focus-visible{outline-color:#fff;}
+
+  /* ---- Menu no celular (auditoria A-3) ---- */
+  .menu-botao{display:none; width:44px; height:44px; padding:0; margin-left:auto;
+    align-items:center; justify-content:center; background:transparent;
+    border:1.5px solid var(--border-strong); border-radius:var(--radius-m);
+    color:var(--petrol); cursor:pointer;}
+  .menu-botao svg{width:22px; height:22px;}
+  @media (max-width:1699px){
+    .menu-botao{display:inline-flex;}
+    .nav-links-mobile-hide.aberto{display:flex !important; position:absolute; left:0; right:0; top:100%;
+      flex-direction:column; align-items:stretch; gap:0; background:var(--surface);
+      border-top:1px solid var(--border); box-shadow:var(--shadow); padding:8px 16px 16px; z-index:150;}
+    .nav-links-mobile-hide.aberto a{min-height:48px; display:flex; align-items:center;
+      border-bottom:1px solid var(--border); font-size:1rem;}
+    header .wrap.nav{position:relative;}
+  }
 </style>
+</head>
+<body>
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
 
 <header>
   <div class="wrap nav">
-    <a class="brand-lockup" href="#" aria-label="WF Folha &amp; Gestão — início">
+    <a class="brand-lockup" href="/" aria-label="WF Folha &amp; Gestão — início">
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand">
-        <span class="brand-name">Wesley França</span>
-        <span class="brand-sub">Folha &amp; Gestão</span>
+        <span class="brand-name">WF Folha &amp; Gestão</span>
+        <span class="brand-sub">Departamento Pessoal</span>
       </span>
     </a>
-    <nav class="links nav-links-mobile-hide">
+    <button class="menu-botao" type="button" id="menu-botao" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu de navegação">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="links nav-links-mobile-hide" id="menu-principal">
       <a href="/ponto/" style="font-weight:700">Registro de ponto</a>
       <a href="#servicos">Serviços</a>
       <a href="#para-quem">Para quem</a>
@@ -712,6 +765,7 @@
     <a class="btn btn-gold nav-cta" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20de%20DP." target="_blank" rel="noopener">Falar no WhatsApp</a>
   </div>
 </header>
+<main id="conteudo">
 
 <section class="hero">
   <div class="wrap hero-inner">
@@ -722,8 +776,8 @@
         <a class="btn btn-gold" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20de%20DP." target="_blank" rel="noopener">
           Pedir uma proposta
         </a>
-        <a class="btn btn-line-petrol" style="border:1px solid rgba(255,255,255,0.4)" href="#proposta">Preencher questionário</a>
-        <a class="btn btn-line-petrol" style="border:1px solid rgba(255,255,255,0.4)" href="mailto:wesley@folhaegestao.com.br">Enviar e-mail</a>
+        <a class="btn btn-line-petrol" href="#proposta">Ver como funciona</a>
+        <a class="hero-link" href="mailto:comercial@folhaegestao.com.br">Prefiro enviar e-mail</a>
       </div>
       <div class="hero-chips">
         <div class="hero-chip">
@@ -752,7 +806,7 @@
   <div class="wrap">
     <div>
       <span class="ponto-selo"><b>Novo</b> WF Ponto &amp; Gestão</span>
-      <h2 id="ponto-titulo">Registro de ponto pelo celular, <em>dentro da lei</em> e ligado à sua folha.</h2>
+      <h2 id="ponto-titulo">Registro de ponto pelo celular, <em>conforme a Portaria 671</em> e ligado à sua folha.</h2>
       <p class="ponto-lead">Sua equipe bate o ponto no próprio celular e você acompanha tudo em tempo real. No fim do mês, as horas chegam prontas para a folha. Sem relógio para comprar, sem papel e sem planilha.</p>
       <ul class="ponto-beneficios">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>Batida só no Wi-Fi ou no endereço da empresa, com selfie opcional</li>
@@ -763,6 +817,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>Registrado no INPI, conforme a Portaria 671</li>
       </ul>
       <div class="ponto-preco"><span>A partir de</span><strong>R$ 4,99</strong><span>por funcionário/mês</span></div>
+      <p class="ponto-minimo">Mínimo de R$ 99 por mês &mdash; ou seja, at&eacute; 19 funcion&aacute;rios o valor &eacute; R$ 99/m&ecirc;s.</p>
       <div class="ponto-ctas">
         <a class="btn btn-gold" href="/ponto/#planos">Ver planos e preços</a>
         <a class="btn btn-ghost" href="/ponto/#demonstracao">Agendar demonstração grátis</a>
@@ -872,7 +927,7 @@
     <div class="quote calc">
       <div>
         <span class="eyebrow">WF Ponto &amp; Gestão</span>
-        <h2>Ponto eletrônico pelo celular, dentro da lei e ligado à sua folha.</h2>
+        <h2>Ponto eletrônico pelo celular, conforme a Portaria 671, e ligado à sua folha.</h2>
         <p>Ponto por aplicativo não é homologado, e é assim que a Portaria 671 manda: para programa de ponto (REP-P), a lei exige o registro no INPI e o Atestado Técnico do desenvolvedor. O WF Ponto está protocolado no INPI em nome da WF (processo BR 51 2026 009067-9).</p>
         <ul class="quote-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg>Sem relógio para comprar: celular ou computador da empresa</li>
@@ -883,7 +938,7 @@
       <div class="quote-cta">
         <a class="btn btn-gold" href="/ponto/#demonstracao">Agendar demonstração gratuita</a>
         <a class="btn btn-ghost" href="/ponto/#planos">Ver planos e preços</a>
-        <small>A partir de R$ 4,99 por funcionário/mês. Demonstração de 30 minutos, por videochamada ou presencial em Recife.</small>
+        <small>A partir de R$ 4,99 por funcionário/mês, com mínimo de R$ 99 por mês. Demonstração de 30 minutos, por videochamada ou presencial em Recife.</small>
       </div>
     </div>
   </div>
@@ -1190,6 +1245,7 @@
   </div>
 </section>
 
+</main>
 <footer class="wrap">
   <span>© <span id="year"></span> WF Folha &amp; Gestão · Seus dados são usados apenas para retorno do contato, em conformidade com a LGPD.</span>
   <a href="https://instagram.com/folhaegestao" target="_blank" rel="noopener">@folhaegestao</a>
@@ -1197,9 +1253,45 @@
 
 <a class="btn btn-gold mobile-cta" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20a%20terceiriza%C3%A7%C3%A3o%20de%20DP." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.9.53 3.68 1.44 5.2L2 22l5.02-1.53a9.87 9.87 0 0 0 5.02 1.37h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.06h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3 .91.9-2.93-.2-.3a8.14 8.14 0 0 1-1.26-4.5c0-4.5 3.66-8.16 8.16-8.16 4.5 0 8.15 3.65 8.15 8.15 0 4.5-3.66 8.16-8.16 8.16zm4.5-6.1c-.25-.12-1.45-.72-1.67-.8-.22-.08-.39-.12-.55.12-.16.24-.63.8-.78.97-.14.16-.28.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.72-.14-.24-.02-.37.11-.5.11-.11.25-.28.37-.42.12-.14.16-.24.25-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
-  WhatsApp
+  <span class="mobile-cta-texto">WhatsApp</span>
 </a>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
+<script>
+(function(){
+  /* auditoria, item a: o WhatsApp recolhe para ícone a partir do primeiro rolar */
+  var fab=document.querySelector('.mobile-cta');
+  if(fab){
+    var ultimo=0;
+    var aoRolar=function(){
+      var agora=Date.now();
+      if(agora-ultimo<80) return;
+      ultimo=agora;
+      fab.classList.toggle('recolhido', (window.pageYOffset||document.documentElement.scrollTop) > 40);
+    };
+    window.addEventListener('scroll', aoRolar, {passive:true});
+    aoRolar();
+  }
+})();
+(function(){
+  var b=document.getElementById('menu-botao'), m=document.getElementById('menu-principal');
+  if(!b||!m) return;
+  b.addEventListener('click', function(){
+    var aberto = b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded', String(!aberto));
+    b.setAttribute('aria-label', aberto ? 'Abrir menu de navegação' : 'Fechar menu de navegação');
+    m.classList.toggle('aberto', !aberto);
+  });
+  m.addEventListener('click', function(e){
+    if(e.target.closest('a')){ m.classList.remove('aberto'); b.setAttribute('aria-expanded','false'); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && b.getAttribute('aria-expanded')==='true'){ b.click(); b.focus(); }
+  });
+})();
+</script>
+</body>
+</html>
