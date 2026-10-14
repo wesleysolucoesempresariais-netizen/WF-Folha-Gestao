@@ -710,3 +710,7 @@
       border-bottom:1px solid var(--border); font-size:1rem;}
     header .wrap.nav{position:relative;}
   }
+
+/* Âncoras antigas (#registro-de-ponto e #ponto) continuam funcionando depois
+   da junção das duas seções do WF Ponto (item e da auditoria). */
+.ancora-antiga{display:block; height:0; scroll-margin-top:80px;}
