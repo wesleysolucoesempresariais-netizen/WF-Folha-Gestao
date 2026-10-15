@@ -182,6 +182,16 @@
   .simula .total b{font-family:var(--font-display); font-size:1.3rem; color:var(--petrol); font-variant-numeric:tabular-nums;}
   @media (max-width:520px){ .simula{grid-template-columns:1fr;} }
   .letra-miuda{margin:12px 0 0; font-size:0.82rem; color:var(--ink-faint);}
+  /* auditoria A-6: link de pulo para quem navega por teclado */
+  .pular-conteudo{position:absolute; left:16px; top:-100px; z-index:200; background:var(--petrol);
+    color:#fff; font-weight:700; padding:12px 20px; border-radius:var(--radius-m);
+    text-decoration:none; transition:top 180ms ease-out;}
+  .pular-conteudo:focus{top:16px;}
+  /* auditoria: alvo de toque mínimo de 44px (WCAG 2.5.8). Em link embutido o
+     padding vertical aumenta a área clicável sem mexer no texto. */
+  header a.nav-link, header nav a, header .links a, header .wrap.nav > a{min-height:44px; display:inline-flex; align-items:center;}
+  footer a{padding-block:15px; display:inline-block;}
+  .zap-flutuante, a.whats, a[href*="wa.me"].btn{min-height:44px;}
 </style>
 <style>
   .wrap{max-width:960px;}
@@ -222,6 +232,8 @@
 </style>
 </head>
 <body>
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
 <header>
   <div class="wrap nav">
     <a class="brand-lockup" href="../" aria-label="WF Folha &amp; Gestão — início">
@@ -232,7 +244,7 @@
   </div>
 </header>
 
-<main class="wrap">
+<main id="conteudo" class="wrap">
   <section class="hero-ponto">
     <span class="eyebrow">WF Ponto &amp; Gestão</span>
     <h1>Ponto eletrônico pelo celular, conforme a Portaria 671, e ligado à sua folha.</h1>

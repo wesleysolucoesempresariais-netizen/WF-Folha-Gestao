@@ -714,3 +714,13 @@
 /* Âncoras antigas (#registro-de-ponto e #ponto) continuam funcionando depois
    da junção das duas seções do WF Ponto (item e da auditoria). */
 .ancora-antiga{display:block; height:0; scroll-margin-top:80px;}
+
+/* Auditoria (WCAG 2.5.8): alvo de toque mínimo de 44px. Em link embutido num
+   parágrafo o padding vertical aumenta a área clicável sem alterar o texto. */
+.brand-lockup{min-height:44px;}
+.seg-link,
+.ledger-desc a,
+main p > a{min-height:44px; display:inline-flex; align-items:center;}
+/* o rodapé é <footer class="wrap">, então o link é filho direto, não descendente de .wrap */
+footer a{padding-block:14px; display:inline-block;}
+main p > a{display:inline; padding-block:15px;}
