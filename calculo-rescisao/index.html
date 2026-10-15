@@ -28,7 +28,10 @@
     --bg:#FBFCFC; --bg-alt:#EEF1F3; --surface:#FFFFFF;
     --ink:#1A1A1A; --ink-soft:#4C5A61; --ink-faint:#646E73;
     --petrol:#084D6E; --petrol-tint:#E7EEF2; --steel:#94ADBB;
-    --border:#DCE3E6; --border-strong:#C3CFD3;
+    --border:#DCE3E6;
+    /* auditoria T-2: #C3CFD3 dava 1,59:1 sobre branco; a WCAG 1.4.11
+       pede 3:1 para contorno de componente. #6E8795 dá 3,78:1. */
+    --border-strong:#6E8795;
     --danger:#B42318; --danger-bg:#FEF3F2;
     --shadow:0 1px 2px rgba(8,77,110,0.06), 0 12px 28px -16px rgba(8,77,110,0.18);
     --radius-s:4px; --radius-m:8px;
@@ -127,6 +130,26 @@
   @media (max-width:600px){ .choices.two{grid-template-columns:1fr;} }
   .check{display:flex; gap:10px; align-items:flex-start; font-size:0.92rem; cursor:pointer;}
   .check input{margin:3px 0 0; accent-color:var(--petrol); width:18px; height:18px; flex:none;}
+  /* auditoria L-2: dado sensível em bloco próprio, com autorização destacada.
+     As cores são tokens para o bloco acompanhar o modo escuro — com valor fixo,
+     o texto do tema escuro ficava quase ilegível sobre o creme. */
+  :root{ --sens-borda:#8A6100; --sens-fundo:#FDF6E7; --sens-cartao:#FFFFFF; --sens-texto:#4C5A61; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --sens-borda:#C79A3A; --sens-fundo:#241D0E; --sens-cartao:#1B160B; --sens-texto:#D9CFB4;
+    }
+  }
+  .bloco-sensivel{border:2px solid var(--sens-borda); background:var(--sens-fundo);
+    border-radius:var(--radius-m); padding:16px 18px; margin-top:18px;}
+  .bloco-sensivel .check span{color:var(--ink);}
+  .aviso-sensivel{background:var(--sens-cartao); border-radius:var(--radius-s); padding:14px;
+    font-size:0.82rem; color:var(--sens-texto); line-height:1.55; margin:0 0 14px;}
+  .aviso-sensivel b{color:var(--ink);}
+  .consent-destacado{background:var(--sens-cartao); border:2px solid var(--sens-borda);
+    border-radius:var(--radius-s); padding:14px; margin-top:14px;}
+  .consent-destacado .check span{color:var(--ink);}
+  .politica-link{font-size:0.82rem; color:var(--ink-faint); line-height:1.55; margin-top:14px;}
+  .politica-link a{padding-block:15px; display:inline-block;}
   .aviso-calculo{border:1px solid var(--border-strong); color:var(--ink); line-height:1.55;}
   .aviso-calculo strong{display:block; font-family:var(--font-display); font-size:0.92rem; margin-bottom:4px;}
   .ferias-lista{display:grid; gap:8px;}
@@ -159,20 +182,32 @@
 
   .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
   footer{color:var(--ink-faint); font-size:0.8rem; padding:28px 16px 40px; text-align:center;}
+  /* auditoria A-6: link de pulo para quem navega por teclado */
+  .pular-conteudo{position:absolute; left:16px; top:-100px; z-index:200; background:var(--petrol);
+    color:#fff; font-weight:700; padding:12px 20px; border-radius:var(--radius-m);
+    text-decoration:none; transition:top 180ms ease-out;}
+  .pular-conteudo:focus{top:16px;}
+  /* auditoria: alvo de toque mínimo de 44px (WCAG 2.5.8). Em link embutido o
+     padding vertical aumenta a área clicável sem mexer no texto. */
+  header a.nav-link, header nav a, header .links a, header .wrap.nav > a{min-height:44px; display:inline-flex; align-items:center;}
+  footer a{padding-block:15px; display:inline-block;}
+  .zap-flutuante, a.whats, a[href*="wa.me"].btn{min-height:44px;}
 </style>
 </head>
 <body>
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
 <header>
   <div class="wrap nav">
     <a class="brand-lockup" href="../" aria-label="WF Folha &amp; Gestão — início">
       <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand"><span class="brand-name">Wesley França</span><span class="brand-sub">Folha &amp; Gestão</span></span>
+      <span class="brand"><span class="brand-name">WF Folha &amp; Gestão</span><span class="brand-sub">Departamento Pessoal</span></span>
     </a>
     <a class="nav-link" href="https://wa.me/5581999955522?text=Ol%C3%A1%21%20Tenho%20d%C3%BAvidas%20sobre%20o%20c%C3%A1lculo%20de%20rescis%C3%A3o." target="_blank" rel="noopener">Dúvidas? WhatsApp</a>
   </div>
 </header>
 
-<main class="wrap">
+<main id="conteudo" class="wrap">
   <section class="intro">
     <span class="eyebrow">Cálculo de rescisão</span>
     <h1>Envie os dados do desligamento e receba o cálculo conferido por especialista.</h1>
@@ -202,9 +237,7 @@
         <div class="field full"><label for="empresaNome">Empresa / empregador <span class="opt">(opcional)</span></label>
           <input type="text" id="empresaNome" name="empresaNome" autocomplete="organization" placeholder="Razão social ou nome do empregador">
           <span class="err">Informe o nome da empresa ou do empregador.</span></div>
-        <div class="field"><label for="empresaDocumento">CNPJ ou CPF do empregador <span class="opt">(opcional)</span></label>
-          <input type="text" id="empresaDocumento" name="empresaDocumento" inputmode="numeric" data-mask="doc" placeholder="00.000.000/0000-00">
-          <span class="err">CNPJ ou CPF inválido. Confira os números ou deixe em branco.</span></div>
+        
         <div class="field"><label for="solicitanteNome">Seu nome</label>
           <input type="text" id="solicitanteNome" name="solicitanteNome" required autocomplete="name">
           <span class="err">Informe seu nome.</span></div>
@@ -215,29 +248,16 @@
           <input type="email" id="solicitanteEmail" name="solicitanteEmail" autocomplete="email">
           <span class="err">E-mail inválido.</span></div>
       </div>
-      <div class="group-title">Endereço do empregador <span class="opt" style="text-transform:none;letter-spacing:0">(opcional)</span></div>
-      <div class="grid grid-3">
-        <div class="field"><label for="empresaEndereco">Endereço</label><input type="text" id="empresaEndereco" name="empresaEndereco" autocomplete="street-address"></div>
-        <div class="field"><label for="empresaMunicipio">Município</label><input type="text" id="empresaMunicipio" name="empresaMunicipio" autocomplete="address-level2"></div>
-        <div class="field"><label for="empresaUF">UF</label>
-          <select id="empresaUF" name="empresaUF"><option value="">—</option></select></div>
-        <div class="field"><label for="empresaCEP">CEP</label><input type="text" id="empresaCEP" name="empresaCEP" inputmode="numeric" data-mask="cep" placeholder="00000-000" autocomplete="postal-code"></div>
-      </div>
-    </fieldset>
+      </fieldset>
 
     <!-- ETAPA 2 -->
     <fieldset class="step" data-step="2">
       <h2>Trabalhador e contrato</h2>
       <p class="lead">Use os valores do contracheque mais recente.</p>
       <div class="grid">
-        <div class="field full"><label for="trabalhadorNome">Nome do trabalhador</label>
-          <input type="text" id="trabalhadorNome" name="trabalhadorNome" required>
-          <span class="err">Informe o nome do trabalhador.</span></div>
-        <div class="field"><label for="trabalhadorCPF">CPF <span class="opt">(opcional)</span></label>
-          <input type="text" id="trabalhadorCPF" name="trabalhadorCPF" inputmode="numeric" data-mask="cpf" placeholder="000.000.000-00">
-          <span class="err">CPF inválido.</span></div>
-        <div class="field"><label for="trabalhadorNascimento">Data de nascimento <span class="opt">(opcional)</span></label>
-          <input type="date" id="trabalhadorNascimento" name="trabalhadorNascimento"></div>
+        
+        
+        
         <div class="field"><label for="cargo">Cargo / função</label>
           <input type="text" id="cargo" name="cargo" required>
           <span class="err">Informe o cargo.</span></div>
@@ -351,16 +371,32 @@
           <input type="text" id="outrosDescontosDescricao" name="outrosDescontosDescricao" placeholder="Ex.: empréstimo consignado, vale-transporte"></div>
       </div>
 
-      <div class="group-title">Situações especiais</div>
+      <div class="bloco-sensivel">
+        <div class="group-title" style="margin-top:0">Situações especiais <span class="opt" style="text-transform:none;letter-spacing:0">(opcional)</span></div>
+        <p class="aviso-sensivel">
+          <b>Por que este bloco é separado.</b> As informações abaixo são <b>dados pessoais
+          sensíveis</b> pela LGPD, porque tratam de saúde e de filiação sindical (art. 5º, II).
+          Por isso são opcionais, têm autorização própria e são usadas apenas neste cálculo.
+          <b>Você pode deixar tudo em branco</b> &mdash; nesse caso o cálculo sai sem elas,
+          marcado como estimativa a conferir.
+        </p>
       <div class="choices">
         <label class="check"><input type="checkbox" name="gestante" value="sim"> <span>Trabalhadora gestante ou em licença-maternidade</span></label>
         <label class="check"><input type="checkbox" name="afastadoAcidente" value="sim"> <span>Afastada(o) pelo INSS por acidente/doença do trabalho nos últimos 12 meses</span></label>
         <label class="check"><input type="checkbox" name="estabilidadeOutra" value="sim"> <span>Membro da CIPA, dirigente sindical ou outra estabilidade</span></label>
         <label class="check"><input type="checkbox" name="convencaoColetiva" value="sim"> <span>A categoria tem convenção coletiva com regras de rescisão</span></label>
       </div>
+        <div class="field consent-destacado">
+          <label class="check"><input type="checkbox" id="lgpdSensivel" name="lgpdSensivel" value="sim">
+          <span><b>Autorizo especificamente</b> o uso das informações de saúde e de categoria
+          sindical marcadas neste bloco, apenas para elaborar este cálculo. Sei que posso não
+          informá-las e ainda assim receber o cálculo.</span></label>
+          <span class="err">Você marcou algo neste bloco. Autorize aqui ou desmarque os itens.</span>
+        </div>
+      </div>
 
       <div class="field" style="margin-top:16px"><label for="observacoes">Observações <span class="opt">(opcional)</span></label>
-        <textarea id="observacoes" name="observacoes" placeholder="Algo que eu deva saber: horas extras não pagas, afastamentos, acordos feitos etc."></textarea></div>
+        <textarea id="observacoes" name="observacoes" placeholder="Algo que eu deva considerar no cálculo: verbas em aberto, acordos já feitos, parcelas combinadas."></textarea></div>
 
       <div class="note aviso-calculo" style="margin-top:20px">
         <strong>Importante sobre o cálculo</strong>
@@ -371,6 +407,7 @@
 
       <div class="field" style="margin-top:12px"><label class="check"><input type="checkbox" id="lgpd" name="lgpd" value="sim" required> <span>Autorizo o uso destes dados exclusivamente para a elaboração do cálculo e o contato sobre este serviço, conforme a LGPD (Lei 13.709/2018).</span></label>
         <span class="err">É preciso autorizar o uso dos dados para enviar.</span></div>
+      <p class="politica-link">Retorno em até 1 dia útil. Seus dados não são usados para outra finalidade. <a href="/privacidade/">Política de Privacidade</a> &middot; <a href="/privacidade/#conteudo">Seus direitos (art. 18)</a></p>
     </fieldset>
 
     <div class="actions" id="actions">
@@ -392,7 +429,7 @@
   </form>
 </main>
 
-<footer>© <span id="year"></span> WF Folha &amp; Gestão · Terceirização de Departamento Pessoal · Seus dados são tratados conforme a LGPD.</footer>
+<footer>© <span id="year"></span> WF Folha &amp; Gestão · Terceirização de Departamento Pessoal · Seus dados são tratados conforme a LGPD. · <a href="/privacidade/">Política de Privacidade</a></footer>
 
 <script>
 (function(){
@@ -410,9 +447,16 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // UFs
-  var ufs = 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ');
+  /* O select de UF saiu junto com o endereço do empregador, que não entra no
+     cálculo (auditoria L-5). O preenchimento fica condicionado para o caso de
+     o campo voltar no futuro. */
   var selUF = document.getElementById('empresaUF');
-  ufs.forEach(function(u){ var o = document.createElement('option'); o.value = u; o.textContent = u; selUF.appendChild(o); });
+  if (selUF) {
+    'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'
+      .split(' ').forEach(function(u){
+        var o = document.createElement('option'); o.value = u; o.textContent = u; selUF.appendChild(o);
+      });
+  }
 
   // Máscaras
   function digits(s){ return (s || '').replace(/\D/g, ''); }
@@ -514,14 +558,12 @@
     var ok = true; var el;
     function req(name, cond){ var e = form.elements[name]; var good = cond !== undefined ? cond : !!val(name); if (!setInvalid(e.length && !e.tagName ? e[0] : e, !good)) { ok = false; el = el || (e.length && !e.tagName ? e[0] : e); } }
     if (i === 0){
-      var doc = digits(val('empresaDocumento')); req('empresaDocumento', !doc || (doc.length === 11 ? cpfValido(doc) : cnpjValido(doc)));
       req('solicitanteNome');
       req('solicitanteWhatsapp', digits(val('solicitanteWhatsapp')).length >= 10);
       var em = val('solicitanteEmail'); req('solicitanteEmail', !em || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em));
     }
     if (i === 1){
-      req('trabalhadorNome'); req('cargo'); req('admissao');
-      var cpf = val('trabalhadorCPF'); req('trabalhadorCPF', !cpf || cpfValido(cpf));
+      req('cargo'); req('admissao');
       req('salario', moneyNum(val('salario')) > 0);
       if (ehPrazo()) req('dataTerminoPrevisto', !!val('dataTerminoPrevisto') && val('dataTerminoPrevisto') > val('admissao'));
       else setInvalid(form.elements.dataTerminoPrevisto, false);
@@ -536,7 +578,15 @@
         if (a === 'trabalhado' && m !== 'pedido_demissao') req('dataAviso', !!val('dataAviso') && val('dataAviso') <= val('dataDesligamento'));
       }
     }
-    if (i === 3){ req('declaracao', form.elements.declaracao.checked); req('lgpd', form.elements.lgpd.checked); }
+    if (i === 3){
+      req('declaracao', form.elements.declaracao.checked); req('lgpd', form.elements.lgpd.checked);
+      /* auditoria L-2: a LGPD art. 11, I exige consentimento específico e destacado para
+         dado de saúde e de filiação sindical. Se o bloco opcional foi marcado, a
+         autorização própria deixa de ser opcional. */
+      var sensiveis = ['gestante','afastadoAcidente','estabilidadeOutra','convencaoColetiva'];
+      var marcou = sensiveis.some(function(n){ var e = form.elements[n]; return e && e.checked; });
+      req('lgpdSensivel', !marcou || form.elements.lgpdSensivel.checked);
+    }
     if (!ok && el) el.focus({preventScroll:false});
     return ok;
   }
