@@ -265,10 +265,12 @@
 </footer>
 
 <script>
-/* ENDEREÇO DO ENVIO — preencher depois de publicar o Apps Script.
-   Enquanto estiver vazio, o formulário valida tudo e mostra a confirmação,
-   mas não envia nada. Ver prototipos/site-2026-10/apps-script/COMO-INSTALAR.md */
-window.WF_FORM = { assunto: 'Questionário de levantamento', endpoint: '' };
+/* Endpoint do Apps Script "Formularios do site WF", implantado em 15/10/2026.
+   Se ficar vazio, o form.js manda pelo WhatsApp em vez de perder o contato. */
+window.WF_FORM = {
+  assunto: 'Questionário de levantamento',
+  endpoint: 'https://script.google.com/macros/s/AKfycbwINddzkBUDdeYM5D1zlmpYUIPC_WcGX4gWWCjVPJP8yDSLvDidY9tIIylfbxPFd47U/exec'
+};
 </script>
 <script src="/form.js"></script>
 </body>

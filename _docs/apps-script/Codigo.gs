@@ -2,8 +2,8 @@
  * WF Folha & Gestão — recebe os formulários do site e envia por e-mail.
  *
  * O visitante preenche em folhaegestao.com.br; esta função só transforma
- * o envio em mensagem. Ela não guarda nada, a não ser que você ligue a planilha
- * em GUARDAR_NA_PLANILHA.
+ * o envio em mensagem. Não guarda nada e não toca em nenhum outro dado da
+ * conta: a única permissão que pede é a de enviar e-mail.
  */
 
 // ----------------------------------------------------------------- ajustes
@@ -16,8 +16,6 @@ var DESTINOS = {
 };
 var DESTINO_PADRAO = 'comercial@folhaegestao.com.br';
 var WHATSAPP = '5581999955522';
-var GUARDAR_NA_PLANILHA = false;   // true = também grava numa aba da planilha
-var ID_DA_PLANILHA = '';           // preencha se ligar o item acima
 var LIMITE_POR_MINUTO = 5;         // trava simples contra robô
 
 // Rótulos bonitos para cada campo. Campo que não estiver aqui usa o próprio nome.
@@ -61,8 +59,6 @@ function doPost(e) {
       body: corpoTexto_(dados),
       name: 'Site WF Folha & Gestão'
     });
-
-    if (GUARDAR_NA_PLANILHA && ID_DA_PLANILHA) guardaNaPlanilha_(dados);
 
     return responde({ ok: true });
   } catch (erro) {
@@ -152,8 +148,3 @@ function corpoTexto_(d) {
   return pares_(d).map(function (p) { return p[0] + ': ' + p[1]; }).join('\n');
 }
 
-function guardaNaPlanilha_(d) {
-  var aba = SpreadsheetApp.openById(ID_DA_PLANILHA).getSheets()[0];
-  var pares = pares_(d);
-  aba.appendRow([new Date()].concat(pares.map(function (p) { return p[1]; })));
-}

@@ -1,36 +1,54 @@
-# Como ligar o envio por e-mail
+# Apps Script dos formulários — já instalado
 
-Cinco passos, uma vez só. Quem faz é você — é a sua conta Google.
+**Status: no ar desde 15/10/2026.** Este documento vira referência; não é preciso
+repetir a instalação.
 
-1. Abra <https://script.google.com> e clique em **Novo projeto**.
-2. Apague o conteúdo do `Código.gs` e cole o arquivo `Codigo.gs` desta pasta.
-3. Dê um nome ao projeto, por exemplo **Formulários do site**.
-4. **Implantar → Nova implantação → Tipo: App da Web**:
-   - *Executar como:* **Eu**
-   - *Quem pode acessar:* **Qualquer pessoa**
-   - Clique em **Implantar** e autorize quando o Google pedir.
-5. Copie o endereço que termina em `/exec` e me mande. Eu coloco nos três
-   formulários e confiro o envio.
+| | |
+|---|---|
+| Projeto | **Formularios do site WF**, no Drive de wesleysolucoesempresariais@gmail.com |
+| Implantação | App da Web, versão 2 |
+| Executar como | wesleysolucoesempresariais@gmail.com |
+| Quem pode acessar | Qualquer pessoa |
+| Endpoint | `https://script.google.com/macros/s/AKfycbwINddzkBUDdeYM5D1zlmpYUIPC_WcGX4gWWCjVPJP8yDSLvDidY9tIIylfbxPFd47U/exec` |
 
-## O que conferir depois
+Ele está ligado em `/questionario/` (`window.WF_FORM.endpoint`).
 
-- O primeiro envio precisa chegar em `comercial@folhaegestao.com.br`.
-- Se não chegar, olhe o spam: a mensagem sai da sua conta Google, não do Titan.
-- O remetente aparece como **Site WF Folha & Gestão**, e o *responder para* já
-  volta para comercial@.
+## Permissões
 
-## O que este código faz e não faz
+O script pede **uma só**: enviar e-mail em nome do dono.
 
-- **Não guarda nada** por padrão. Só monta e envia a mensagem. Se quiser uma
-  cópia em planilha, mude `GUARDAR_NA_PLANILHA` para `true` e preencha o ID.
-- **Não registra dado pessoal no log.** Em caso de erro grava só o tipo do erro,
-  seguindo a mesma regra de privacidade do app.
-- **Descarta robô em silêncio** pelo campo-isca `site`, invisível na página, e
-  aceita no máximo 5 envios por minuto.
-- Campo vazio não aparece no e-mail, e as caixas de consentimento não entram no
-  corpo — ficam registradas pelo próprio envio.
+A primeira versão do código tinha uma função opcional de gravar em planilha,
+desligada por padrão. Mesmo desligada, ela fazia o Google pedir acesso a
+**todas as planilhas da conta**. A função foi removida antes de autorizar, e a
+permissão de planilha deixou de ser pedida.
 
-## Quando a Política de Privacidade for publicada
+## Para onde cada formulário vai
 
-Ela precisa dizer que os formulários são processados pelo Google (Apps Script) e
-entregues por e-mail na caixa comercial. É o achado L-6 da auditoria.
+| Formulário | Destino |
+|---|---|
+| Questionário de levantamento | comercial@folhaegestao.com.br |
+| Cálculo de rescisão | rh@folhaegestao.com.br |
+| Demonstração do WF Ponto | ponto@folhaegestao.com.br |
+| Qualquer outro | comercial@folhaegestao.com.br |
+
+O roteamento usa o campo `_assunto` que a página envia. Para mudar destino,
+edite `DESTINOS` no `Codigo.gs` e **crie uma nova implantação** — salvar o
+código não basta.
+
+## Observações
+
+- O remetente é `wesleysolucoesempresariais@gmail.com`, não `comercial@`. O
+  e-mail chega no Titan e você responde de lá como `comercial@`. Para o
+  remetente ser `comercial@` seria preciso uma rota própria usando o SMTP do
+  Titan.
+- Como `comercial@` tem regra de entrega, as mensagens caem na pasta
+  **Comercial**, não na Caixa de entrada.
+- O campo-isca `site` descarta robô em silêncio, e há limite de 5 envios por
+  minuto.
+- Se o endpoint for apagado ou esvaziado, o `form.js` passa a abrir o WhatsApp
+  com as respostas montadas, em vez de perder o contato.
+
+## O outro script
+
+O formulário de rescisão usa um script separado e anterior, que responde
+`{"ok":true,"servico":"calculo-rescisao"}` e já funciona. Não foi tocado.
