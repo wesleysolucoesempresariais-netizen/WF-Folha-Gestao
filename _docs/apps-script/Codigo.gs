@@ -7,8 +7,14 @@
  */
 
 // ----------------------------------------------------------------- ajustes
-var DESTINO = 'comercial@folhaegestao.com.br';
-var RESPONDER_PARA = 'comercial@folhaegestao.com.br';
+/* Cada formulário vai para o apelido da sua finalidade. A chave é o _assunto
+   que a página envia; o padrão vale para o que não estiver na lista. */
+var DESTINOS = {
+  'Questionário de levantamento': 'comercial@folhaegestao.com.br',
+  'Cálculo de rescisão':          'rh@folhaegestao.com.br',
+  'Demonstração do WF Ponto':     'ponto@folhaegestao.com.br'
+};
+var DESTINO_PADRAO = 'comercial@folhaegestao.com.br';
 var WHATSAPP = '5581999955522';
 var GUARDAR_NA_PLANILHA = false;   // true = também grava numa aba da planilha
 var ID_DA_PLANILHA = '';           // preencha se ligar o item acima
@@ -45,9 +51,11 @@ function doPost(e) {
 
     if (passouDoLimite_()) return responde({ ok: false, erro: 'limite' });
 
+    var destino = DESTINOS[dados._assunto] || DESTINO_PADRAO;
+
     MailApp.sendEmail({
-      to: DESTINO,
-      replyTo: RESPONDER_PARA,
+      to: destino,
+      replyTo: destino,
       subject: assunto_(dados),
       htmlBody: corpoHtml_(dados),
       body: corpoTexto_(dados),
