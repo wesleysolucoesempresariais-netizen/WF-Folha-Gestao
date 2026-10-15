@@ -57,7 +57,7 @@ function doPost(e) {
       subject: assunto_(dados),
       htmlBody: corpoHtml_(dados),
       body: corpoTexto_(dados),
-      name: 'Site WF Folha & Gestão'
+      name: 'WF Folha & Gestão — formulário do site'
     });
 
     return responde({ ok: true });

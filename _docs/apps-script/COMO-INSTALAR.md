@@ -6,7 +6,7 @@ repetir a instalação.
 | | |
 |---|---|
 | Projeto | **Formularios do site WF**, no Drive de wesleysolucoesempresariais@gmail.com |
-| Implantação | App da Web, versão 2 |
+| Implantação | App da Web, versão 3 |
 | Executar como | wesleysolucoesempresariais@gmail.com |
 | Quem pode acessar | Qualquer pessoa |
 | Endpoint | `https://script.google.com/macros/s/AKfycbwINddzkBUDdeYM5D1zlmpYUIPC_WcGX4gWWCjVPJP8yDSLvDidY9tIIylfbxPFd47U/exec` |
@@ -37,10 +37,13 @@ código não basta.
 
 ## Observações
 
-- O remetente é `wesleysolucoesempresariais@gmail.com`, não `comercial@`. O
-  e-mail chega no Titan e você responde de lá como `comercial@`. Para o
-  remetente ser `comercial@` seria preciso uma rota própria usando o SMTP do
-  Titan.
+- O remetente aparece como **"WF Folha & Gestão — formulário do site"**. O
+  endereço por trás é `wesleysolucoesempresariais@gmail.com`, porque o script
+  roda nessa conta; o `replyTo` já devolve para o apelido de destino.
+- Para o endereço do remetente ser o próprio `comercial@`, é preciso cadastrá-lo
+  em Gmail → Configurações → Contas → "Enviar e-mail como", o que exige a senha
+  SMTP da caixa Titan (`smtp.titan.email`, porta 465, SSL). Feito isso, trocar
+  `MailApp.sendEmail` por `GmailApp.sendEmail` com `from:` e reimplantar.
 - Como `comercial@` tem regra de entrega, as mensagens caem na pasta
   **Comercial**, não na Caixa de entrada.
 - O campo-isca `site` descarta robô em silêncio, e há limite de 5 envios por
