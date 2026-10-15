@@ -98,6 +98,9 @@
   @media (prefers-contrast:more){ header::before, .contato::before, .confirmacao::before{display:none;} }
   /* alvo de toque de 44px nos links do rodapé (WCAG 2.5.8) */
   footer a{padding-block:14px; display:inline-block;}
+  /* e-mail e telefone do bloco de contato: são ações de toque, não links
+     dentro de frase, então valem os 44px da WCAG 2.5.8. */
+  .contato a{padding-block:13px; display:inline-block;}
 </style>
 </head>
 <body>
