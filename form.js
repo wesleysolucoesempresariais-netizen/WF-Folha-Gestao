@@ -95,8 +95,19 @@
 
     if (botao) { botao.disabled = true; botao.textContent = 'Enviando...'; }
 
-    if (!cfg.endpoint) {                     // modo protótipo
-      window.setTimeout(confirma, 700);
+    /* Sem endpoint configurado, NADA seria enviado e o visitante veria uma
+       confirmação falsa. Em vez disso, a conversa vai para o WhatsApp com as
+       respostas montadas: nenhum contato se perde. */
+    if (!cfg.endpoint) {
+      var d = dados(), linhas = [cfg.assunto || 'Contato pelo site', ''];
+      for (var k in d) {
+        if (k.charAt(0) === '_' || k === 'site' || k === 'lgpd') continue;
+        if (String(d[k]).trim() === '') continue;
+        linhas.push(k + ': ' + d[k]);
+      }
+      window.open('https://wa.me/5581999955522?text=' +
+                  encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
+      confirma();
       return;
     }
 
