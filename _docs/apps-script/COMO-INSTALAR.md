@@ -6,7 +6,7 @@ repetir a instalação.
 | | |
 |---|---|
 | Projeto | **Formularios do site WF**, no Drive de wesleysolucoesempresariais@gmail.com |
-| Implantação | App da Web, versão 3 |
+| Implantação | App da Web, versão 3 · implantação única (a órfã da 1ª tentativa foi arquivada em 17/10) |
 | Executar como | wesleysolucoesempresariais@gmail.com |
 | Quem pode acessar | Qualquer pessoa |
 | Endpoint | `https://script.google.com/macros/s/AKfycbwINddzkBUDdeYM5D1zlmpYUIPC_WcGX4gWWCjVPJP8yDSLvDidY9tIIylfbxPFd47U/exec` |
@@ -55,3 +55,21 @@ código não basta.
 
 O formulário de rescisão usa um script separado e anterior, que responde
 `{"ok":true,"servico":"calculo-rescisao"}` e já funciona. Não foi tocado.
+
+## Armado, se um dia quiser trocar o remetente
+
+`ALTERNATIVA-remetente-comercial.gs`, nesta pasta, tem o código pronto e o
+passo a passo para o e-mail sair como `comercial@folhaegestao.com.br`.
+
+**Está desarmado de propósito.** `MailApp` não aceita definir remetente; só
+`GmailApp` aceita, e ele exige o escopo `https://mail.google.com/`, que dá ao
+script **acesso total à caixa** — ler, escrever e apagar. Trocar um endereço
+de remetente por isso é a mesma desproporção da permissão de planilha que foi
+recusada na implantação.
+
+Hoje o `replyTo` já devolve para o apelido de destino e o nome de exibição lê
+"WF Folha & Gestão — formulário do site", então quem responde não vê o Gmail.
+
+O pré-requisito continua sendo do dono: cadastrar `comercial@` em Gmail →
+Configurações → Contas → "Enviar e-mail como", o que pede a senha SMTP do
+Titan (`smtp.titan.email`, 465, SSL).
