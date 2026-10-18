@@ -56,12 +56,13 @@ código não basta.
 O formulário de rescisão usa um script separado e anterior, que responde
 `{"ok":true,"servico":"calculo-rescisao"}` e já funciona. Não foi tocado.
 
-## Armado, se um dia quiser trocar o remetente
+## Remetente — decidido em 17/10/2026: fica como está
 
 `ALTERNATIVA-remetente-comercial.gs`, nesta pasta, tem o código pronto e o
 passo a passo para o e-mail sair como `comercial@folhaegestao.com.br`.
 
-**Está desarmado de propósito.** `MailApp` não aceita definir remetente; só
+**O dono decidiu manter o envio atual**, com a permissão estreita. O arquivo
+fica como referência, não como pendência. `MailApp` não aceita definir remetente; só
 `GmailApp` aceita, e ele exige o escopo `https://mail.google.com/`, que dá ao
 script **acesso total à caixa** — ler, escrever e apagar. Trocar um endereço
 de remetente por isso é a mesma desproporção da permissão de planilha que foi
