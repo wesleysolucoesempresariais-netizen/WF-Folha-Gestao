@@ -12,6 +12,9 @@
     --steel: #94ADBB;
     --border: #DCE3E6;
     --border-strong: #C3CFD3;
+    /* Borda de componente (botão, menu, campo): precisa de 3:1 pela WCAG
+       1.4.11. O --border-strong acima é divisor sutil e não serve para isso. */
+    --border-ui: #6E8795;
     --shadow: 0 1px 2px rgba(8,77,110,0.06), 0 12px 28px -16px rgba(8,77,110,0.18);
     --radius-s: 4px;
     --radius-m: 8px;
@@ -48,7 +51,8 @@
       --petrol-tint: #16262E;
       --gold: #94ADBB;
       --border: #263136;
-      --border-strong: #34424849;
+      --border-strong: #344248;
+    --border-ui: #6E8795;
       --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 16px 32px -18px rgba(0,0,0,0.6);
     }
   }
@@ -64,6 +68,7 @@
     --gold: #94ADBB;
     --border: #263136;
     --border-strong: #344248;
+    --border-ui: #6E8795;
     --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 16px 32px -18px rgba(0,0,0,0.6);
   }
 
@@ -185,7 +190,7 @@
   .btn-gold:hover{ box-shadow: var(--shadow); transform:translateY(-1px); }
   .btn-ghost{
     background:transparent;
-    border-color:var(--border-strong);
+    border-color:var(--border-ui);
     color:var(--ink);
   }
   .btn-ghost:hover{ border-color:var(--petrol); color:var(--petrol); }
@@ -707,7 +712,7 @@
   /* ---- Menu no celular (auditoria A-3) ---- */
   .menu-botao{display:none; width:44px; height:44px; padding:0; margin-left:auto;
     align-items:center; justify-content:center; background:transparent;
-    border:1.5px solid var(--border-strong); border-radius:var(--radius-m);
+    border:1.5px solid var(--border-ui); border-radius:var(--radius-m);
     color:var(--petrol); cursor:pointer;}
   .menu-botao svg{width:22px; height:22px;}
   @media (max-width:1699px){
