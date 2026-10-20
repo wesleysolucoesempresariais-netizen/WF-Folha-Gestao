@@ -189,14 +189,23 @@
     color:var(--ink);
   }
   .btn-ghost:hover{ border-color:var(--petrol); color:var(--petrol); }
+  /* Contornado para usar SOBRE FUNDO PETRÓLEO (topo, painel de contato).
+     Texto e borda brancos: 4,6:1 de borda sobre o petróleo, acima do mínimo
+     de 3:1 da WCAG 1.4.11. NÃO use sobre cartão claro — vira branco no branco. */
   .btn-line-petrol{
     background:transparent;
     color:#FFFFFF;
-    /* auditoria, item b: a borda era inline a 40% de branco (3,49:1 sobre
-       petróleo). A 55% dá 4,6:1, bem acima do mínimo de 3:1 da WCAG 1.4.11. */
     border:2px solid rgba(255,255,255,0.55);
   }
   .btn-line-petrol:hover{background:rgba(255,255,255,0.12); border-color:#FFFFFF;}
+  /* Mesmo desenho, para usar SOBRE FUNDO CLARO (cartão, seção branca).
+     Texto e borda em petróleo: 8,9:1 de texto e borda sobre o branco. */
+  .btn-outline-petrol{
+    background:transparent;
+    color:var(--petrol);
+    border:2px solid var(--petrol);
+  }
+  .btn-outline-petrol:hover{background:var(--petrol); color:#FFFFFF;}
   .nav-cta{display:none;}
   @media (min-width:860px){ .nav-cta{display:inline-flex;} }
   .nav-links-mobile-hide{display:none;}
