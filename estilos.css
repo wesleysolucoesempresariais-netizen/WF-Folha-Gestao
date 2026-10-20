@@ -19,7 +19,6 @@
     --radius-s: 4px;
     --radius-m: 8px;
     --font-display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --font-display-x: 'Archivo Expanded', 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-body: 'Helvetica Neue', Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
     --fs-2xs: 0.7rem;
     --fs-xs: 0.82rem;
@@ -449,7 +448,7 @@
   @media (max-width:860px){ .process-step{border-right:none; border-bottom:1px solid var(--border);} }
   .process-step:last-child{border-right:none;}
   .process-num{
-    font-family:var(--font-display-x);
+    font-family:var(--font-display);
     font-size:var(--fs-xs);
     color:var(--gold);
     font-weight:700;
