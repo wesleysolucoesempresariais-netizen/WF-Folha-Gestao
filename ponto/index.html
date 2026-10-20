@@ -66,6 +66,15 @@
   .brand-lockup{display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;}
   .brand-mark{flex:none; width:32px; height:32px; background-color:var(--petrol); -webkit-mask:var(--mark) center/contain no-repeat; mask:var(--mark) center/contain no-repeat;}
   .brand{display:flex; flex-direction:column; line-height:1.1;}
+  /* No celular a marca disputava a linha com os links e quebrava
+     "WF Folha & Gestão" em duas linhas, amassando o cabeçalho.
+     Abaixo de 560px os links descem para a segunda linha e a marca fica
+     inteira, em uma linha só. */
+  @media (max-width:560px){
+    .nav{flex-wrap:wrap; height:auto; min-height:64px; padding-block:10px; row-gap:4px;}
+    .brand-lockup{flex:1 1 100%;}
+    .brand-name{white-space:nowrap;}
+  }
   .brand-name{font-family:var(--font-display); font-weight:800; font-size:1.05rem; text-transform:uppercase;}
   .brand-sub{font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; margin-top:3px;}
   .nav-link{font-family:var(--font-display); font-weight:600; font-size:0.88rem; text-decoration:none; color:var(--ink-soft);}
