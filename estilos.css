@@ -304,6 +304,10 @@
 
   /* ====== Section shell ====== */
   section{padding:120px 0;}
+  /* No celular os 120px viravam 144px de vazio antes do título e 2.640px de
+     espaço morto na página inteira. 56px está na escala do DESIGN.md e o ponto
+     de quebra de 760px já existe na folha — não inventa um novo. */
+  @media (max-width:760px){ section{padding:56px 0;} }
   .section-head{
     max-width:640px;
     margin-bottom:56px;
